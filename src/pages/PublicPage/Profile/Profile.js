@@ -17,74 +17,34 @@ import MoreVertIcon from '@material-ui/icons/MoreVert';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
 import Button from '@material-ui/core/Button';
+import { css } from 'aphrodite';
+import styles from './ProfileStyles';
 
 
-const useStyles = makeStyles(theme => ({
-  profileWrapper: {
-    marginTop: '40px',
-  },
-  media: {
-    height: 10,
-    paddingTop: '56.25%', 
-  },
-  avatar: {
-    width: '220px',
-    height: '220px',
-    objectFit: 'cover'
-  },
-  avatarWrapper: {
-    display: 'flex', 
-    flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'center'
-  },
-  infoWrapper: {
-    display: 'flex', 
-    flexDirection: 'column',
-    justifyContent: 'center',
-    alignItems: 'flex-start'
-  },
-  textField: {
-    marginRight: '20px'
-  },
-  changeInfoWrapper: {
-    marginTop: '20px'
-  },
-  postTitle: {
-    marginTop: '50px',
-    marginRight: '50px',
-    marginBottom: '30px',
-    display: 'flex', 
-    flexDirection: 'row',
-    justifyContent: 'center',
-  }
-}));
 
 export default function Profile () {
 
-  const classes = useStyles();
-
   return (
     <div>
-      <Container className={classes.profileWrapper}>
+      <Container className={css(styles.profileWrapper)}>
         <Grid
           container
           direction="row"
           spacing={3}
         >
-          <Grid item xs={5} className={classes.avatarWrapper}>
-            <Avatar alt="Polina" src="https://sun9-3.userapi.com/c841624/v841624870/42022/gliwAEljN4w.jpg" className={classes.avatar} />
+          <Grid item xs={5} className={css(styles.avatarWrapper)}>
+            <Avatar alt="Polina" src="https://sun9-3.userapi.com/c841624/v841624870/42022/gliwAEljN4w.jpg" className={css(styles.avatar)} />
           </Grid>
-          <Grid item xs={7} className={classes.infoWrapper}>
+          <Grid item xs={7} className={css(styles.infoWrapper)}>
             <Typography variant="h2">
                p.trava
             </Typography>
-            <div className={classes.changeInfoWrapper}>
+            <div className={css(styles.changeInfoWrapper)}>
               <TextField
                 id="outlined-helperText"
                 label="Name"
                 defaultValue="Polina"
-                className={classes.textField}
+                className={css(styles.textField)}
                 margin="normal"
                 variant="outlined"
               />
@@ -92,14 +52,14 @@ export default function Profile () {
                 id="outlined-helperText"
                 label="Surname"
                 defaultValue="Khlopyanikova"
-                className={classes.textField}
+                className={css(styles.textField)}
                 margin="normal"
                 variant="outlined"
               />
             </div>
           </Grid>
         </Grid>
-        <Typography variant="h4" className={classes.postTitle}>
+        <Typography variant="h4" className={css(styles.postTitle)}>
           Publications
         </Typography>
         <Grid
@@ -120,7 +80,7 @@ export default function Profile () {
                 subheader="September 14, 2016"
               />
               <CardMedia 
-                 className={classes.media}
+                 className={css(styles.media)}
                 image="https://sun9-67.userapi.com/c855336/v855336480/15f3ad/tjtBbYGdwXk.jpg"
                 title="Paella dish"
               />
@@ -150,7 +110,7 @@ export default function Profile () {
                 subheader="September 14, 2016"
               />
               <CardMedia 
-                 className={classes.media}
+                 className={css(styles.media)}
                 image="https://sun9-67.userapi.com/c855336/v855336480/15f3ad/tjtBbYGdwXk.jpg"
                 title="Paella dish"
               />
@@ -180,7 +140,7 @@ export default function Profile () {
                 subheader="September 14, 2016"
               />
               <CardMedia 
-                 className={classes.media}
+                 className={css(styles.media)}
                 image="https://sun9-67.userapi.com/c855336/v855336480/15f3ad/tjtBbYGdwXk.jpg"
                 title="Paella dish"
               />
@@ -210,7 +170,7 @@ export default function Profile () {
                 subheader="September 14, 2016"
               />
               <CardMedia 
-                 className={classes.media}
+                 className={css(styles.media)}
                 image="https://sun9-67.userapi.com/c855336/v855336480/15f3ad/tjtBbYGdwXk.jpg"
                 title="Paella dish"
               />

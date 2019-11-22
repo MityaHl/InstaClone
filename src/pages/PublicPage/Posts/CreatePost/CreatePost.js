@@ -11,9 +11,9 @@ import FormGroup from '@material-ui/core/FormGroup';
 import Typography from '@material-ui/core/Typography';
 import Multiselect from 'react-widgets/lib/Multiselect';
 import { connect } from 'react-redux';
+import { css } from 'aphrodite';
+import styles from './CreatePostStyles';
 
-
-import './CreatePost.scss'
 
 class CreatePost extends Component {
     constructor(props) {
@@ -30,7 +30,7 @@ class CreatePost extends Component {
                 <DialogContentText>
                     To create a post, please, enter title, upload image and write description here. Also you can add some tags.
                 </DialogContentText>
-                <Typography variant="h6" className='typography'>
+                <Typography variant="h6" className={ css(styles.typography) }>
                     Title
                 </Typography>
                 <FormGroup>
@@ -38,11 +38,11 @@ class CreatePost extends Component {
                     id="outlined-search"
                     label="Title"
                     type="text"
-                    className='textField'
+                    className={ css(styles.textField) }
                     margin="normal"
                     variant="outlined"
                     />
-                    <Typography variant="h6" className='typography'>
+                    <Typography variant="h6" className={ css(styles.typography) }>
                         Image
                     </Typography>
                     <input
@@ -58,7 +58,7 @@ class CreatePost extends Component {
                             Upload
                         </Button>
                     </label>
-                    <Typography variant="h6" className='typography'>
+                    <Typography variant="h6" className={ css(styles.typography) }>
                         Content
                     </Typography>
                     <TextField
@@ -70,7 +70,7 @@ class CreatePost extends Component {
                         margin="normal"
                         variant="outlined"
                     />
-                    <Typography variant="h6" className='typography'>
+                    <Typography variant="h6" className={ css(styles.typography) }>
                         Tags
                     </Typography>
                     <Multiselect

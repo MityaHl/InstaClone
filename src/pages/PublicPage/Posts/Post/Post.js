@@ -13,7 +13,8 @@ import FavoriteBorder from '@material-ui/icons/FavoriteBorder';
 import IconButton from '@material-ui/core/IconButton';
 import KeyboardArrowRightIcon from '@material-ui/icons/KeyboardArrowRight';
 import { connect } from 'react-redux';
-import './Post.scss'
+import { css } from 'aphrodite';
+import styles from './PostStyles';
 
 class Post extends Component {
 
@@ -41,7 +42,7 @@ class Post extends Component {
 
     render(){
         return(
-            <Card className="card">
+            <Card className={css(styles.card)}>
                 <CardHeader 
                     avatar = {<Avatar src="https://gisfit-production.web.app/assets/img/logo.png"/>}
                     title = {<Typography>Author</Typography>}
@@ -55,7 +56,7 @@ class Post extends Component {
                     subheader="September 14, 2016"
                 />
                 <CardMedia 
-                    className='media'
+                    className={css(styles.media)}
                     image="https://sun9-67.userapi.com/c855336/v855336480/15f3ad/tjtBbYGdwXk.jpg"
                     title="Paella dish"
                 />
@@ -66,7 +67,7 @@ class Post extends Component {
                 </CardContent>
                 <CardActions>
                     <FormControlLabel 
-                    control={<Checkbox className='like' icon={<FavoriteBorder />} checkedIcon={<Favorite />} value="checkedH" />}
+                    control={<Checkbox className={css(styles.like)} icon={<FavoriteBorder />} checkedIcon={<Favorite />} value="checkedH" />}
                     label="Like"
                     />
                 </CardActions>

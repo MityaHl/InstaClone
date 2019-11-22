@@ -13,18 +13,19 @@ import Checkbox from '@material-ui/core/Checkbox';
 import Avatar from '@material-ui/core/Avatar';
 import Dialog from '@material-ui/core/Dialog';
 import DialogContent from '@material-ui/core/DialogContent';
-import './OnePost';
 import { connect } from 'react-redux';
+import { css } from 'aphrodite';
+import styles from './OnePostStyles';
 
 
 class OnePost extends Component {
   
 render() {
     return (   
-          <Dialog title='vervev' fullWidth={true} open={this.props.state.isOpenPost}  onBackdropClick={
+          <Dialog fullWidth={true} open={this.props.state.isOpenPost}  onBackdropClick={
               this.props.onOpenPost
           }>
-            <Container className="card-one">
+            <Container className={css(styles.cardOne)}>
                 <Card>
                     <CardHeader 
                       avatar = {<Avatar src="https://gisfit-production.web.app/assets/img/logo.png"/>}
@@ -34,7 +35,7 @@ render() {
                     <CardMedia 
                         image="https://sun9-67.userapi.com/c855336/v855336480/15f3ad/tjtBbYGdwXk.jpg"
                         title="Paella dish"
-                        className='media'
+                        className={css(styles.media)}
                     />
                     <CardContent>
                     <Typography variant="body2" color="textSecondary" component="p">

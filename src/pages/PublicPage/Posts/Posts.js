@@ -25,9 +25,9 @@ import CreatePost from './CreatePost/CreatePost';
 import Post from './Post/Post';
 import OnePost from './OnePost/OnePost';
 import { connect } from 'react-redux';
-
-import './Posts.scss';
-import { async } from '../../../store/actions/posts'
+import { css } from 'aphrodite';
+import styles from './PostsStyles';
+import { async } from '../../../store/actions/posts';
 
 
 class Posts extends Component {
@@ -58,7 +58,7 @@ class Posts extends Component {
   render() {
     return (
       <div className="App">
-        <Container maxWidth="md" className='card'>
+        <Container maxWidth="md" className={css(styles.card)}>
   
           <Grid 
             container
@@ -81,8 +81,8 @@ class Posts extends Component {
                     direction='column'
                     alignItems='center' 
                   >
-                  <div className='menuContent'>
-                    <FormControl className='card'>
+                  <div className={css(styles.menuContent)}>
+                    <FormControl className={css(styles.card)}>
                       <Typography variant="h5" color="textSecondary" component="h6">
                         Find user.
                       </Typography>
@@ -94,7 +94,7 @@ class Posts extends Component {
                       />
                       <FormHelperText>Find user by login.</FormHelperText>
                     </FormControl>
-                    <FormControl className='form-control'>
+                    <FormControl className={css(styles.formControl)}>
                       <Typography variant="h5" color="textSecondary" component="h6">
                         Find post.
                       </Typography>
@@ -107,14 +107,12 @@ class Posts extends Component {
                       />
                       <FormHelperText >Find post by tag.</FormHelperText>
                     </FormControl>
-                    <div className='button-wrapper'>
-                      <Button variant="contained" color="secondary" className='button' onClick={this.props.onAddPost}>
+                    <div className={css(styles.buttonWrapper)}>
+                      <Button variant="contained" color="secondary" className={css(styles.button)} onClick={this.props.onAddPost}>
                         Create Post
                       </Button>
                     </div>
-                    
-                  </div>
-                     
+                  </div>  
                 </Grid>
           </Grid>
           <OnePost/>
