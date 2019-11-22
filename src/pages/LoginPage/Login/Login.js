@@ -1,31 +1,14 @@
 import React, { Component } from 'react';
 import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
-import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import {Link} from "react-router-dom";
 import { connect } from 'react-redux';
-import styles from './Login.module.css';
+import { css } from 'aphrodite';
+import styles from './LoginStyles';
 
-const useStyles = makeStyles(theme => ({
-  grid: {
-      height: "70vh"
-  },
-  textField: {
-      width: '60%',
-      marginTop: '30px'
-  },
-  button: {
-    backgroundColor: '#ec407a',
-    marginTop: '30px',
-    width: '30%',
-  },
-  formWrapper: {
-      border: '2px solid black'
-  }
-}));
 
 class Login extends Component {
 
@@ -38,7 +21,7 @@ render() {
     <div >
       <Container maxWidth="sm">
           <Grid
-            className='grid'
+            className={ css(styles.grid) }
             container
             direction='column'
             alignItems='center'
@@ -50,7 +33,7 @@ render() {
             <TextField
                 id="outlined-helperText"
                 label="Login"
-                className='textFields'
+                className={ css(styles.textField) }
                 helperText="Enter login"
                 margin="normal"
                 variant="outlined"
@@ -59,16 +42,17 @@ render() {
                 id="outlined-helperText"
                 label="Password"
                 type="password"
+                className={ css(styles.textField) }
                 helperText="Enter Password"
                 margin="normal"
                 variant="outlined"
             />
-            <Button variant="contained" color="secondary" className="button-login" onClick={this.props.onAuth}>
+            <Button variant="contained" color="secondary" className={ css(styles.button) } onClick={this.props.onAuth}>
                 Enter
             </Button>
 
             <Link to='/signin' >
-              <Typography className='black-link' style={{ marginTop: '20px' }}>
+              <Typography className={ css(styles.blackLink) }>
                 SignIn
               </Typography>
             </Link>

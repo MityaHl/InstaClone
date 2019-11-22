@@ -15,6 +15,8 @@ import PersonIcon from '@material-ui/icons/Person';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import {Link} from "react-router-dom";
 import { connect } from 'react-redux';
+import { css } from 'aphrodite';
+import styles from './HeaderMenuStyles'
 
 const HeaderMenu = () => {
     const [anchorEl, setAnchorEl] = React.useState(null);
@@ -28,7 +30,7 @@ const HeaderMenu = () => {
 
     return (
         <div>
-            <IconButton onClick={handleClick} className="link">
+            <IconButton onClick={handleClick} className={ css(styles.link) }>
                 <Typography className="accountCircle">
                     Mitya
                 </Typography>
@@ -42,17 +44,17 @@ const HeaderMenu = () => {
                 onClose={handleClose}
                 >
                 <MenuItem onClick={handleClose}>
-                    <PersonIcon className='icon' fontSize="small" />
-                    <Link to='/profile'>
-                    <Typography className='black-link'>  
+                    <PersonIcon className={ css(styles.icon) } fontSize="small" />
+                    <Link to='/profile' className={ css(styles.blackLink)} >
+                    <Typography >  
                         My account
                     </Typography>
                     </Link>
                 </MenuItem>
                 <MenuItem onClick={handleClose}>
-                    <ExitToAppIcon className='icon' fontSize="small" />
-                    <Link to='/logout' >
-                    <Typography className='black-link'>
+                    <ExitToAppIcon className={ css(styles.icon) } fontSize="small" />
+                    <Link to='/logout' className={ css(styles.blackLink) }>
+                    <Typography>
                         LogOut
                     </Typography>
                     </Link>

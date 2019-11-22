@@ -16,13 +16,14 @@ import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import {Link} from "react-router-dom";
 import HeaderMenu from './HeaderMenu/HeaderMenu';
 import { connect } from 'react-redux';
-import'./Header.scss';
+import { css } from 'aphrodite';
+import styles from './HeaderStyles';
 
   class Header extends Component {
     
     render() {
       return (
-      <AppBar position="sticky" className="header">
+      <AppBar position="sticky" className={ css(styles.header) }>
         <Container maxWidth="lg">
           <Toolbar>
             <Grid 
@@ -36,12 +37,12 @@ import'./Header.scss';
                 xs={10} 
                 container
                 direction="row"
-                justify="center"
+                justify="flex-start"
                 alignItems="center"
               >
-                <InstagramIcon className='logo'/>
-                <Typography className='title' variant="h6">
-                  <Link to='/'  className='link'>
+                <InstagramIcon className={ css(styles.logo) }/>
+                <Typography variant="h6">
+                  <Link to='/'  className={ css(styles.link) }>
                     InstaClone
                   </Link>
                 </Typography>
