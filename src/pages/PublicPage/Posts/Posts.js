@@ -27,12 +27,10 @@ import OnePost from './OnePost/OnePost';
 import { connect } from 'react-redux';
 import { css } from 'aphrodite';
 import styles from './PostsStyles';
-import { async } from '../../../store/actions/posts';
 
 
 class Posts extends Component {
-
-
+  
   constructor(props) {
     super(props);
     this.state = {
@@ -56,6 +54,8 @@ class Posts extends Component {
   }
 
   render() {
+    let posts = this.props.state.posts;
+    console.log(posts);
     return (
       <div className="App">
         <Container maxWidth="md" className={css(styles.card)}>
@@ -71,9 +71,11 @@ class Posts extends Component {
                   alignItems='center'
                 >
                   
-                  <Post/>
-
-
+                {
+                  posts.map((post, index) => (
+                    <Post key={index} postInfo={post.author}/>
+                  ))
+                }
                   
                 </Grid>
                   <Grid item xs={3}

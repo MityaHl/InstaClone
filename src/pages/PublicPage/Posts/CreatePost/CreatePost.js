@@ -6,7 +6,6 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
-import Input from '@material-ui/core/Input';
 import FormGroup from '@material-ui/core/FormGroup';
 import Typography from '@material-ui/core/Typography';
 import Multiselect from 'react-widgets/lib/Multiselect';
@@ -16,9 +15,6 @@ import styles from './CreatePostStyles';
 
 
 class CreatePost extends Component {
-    constructor(props) {
-        super(props);
-    }
 
     render() {
         return (
@@ -100,9 +96,9 @@ export default connect(
       onAddPost: () => {
         dispatch( {type: 'CHANGE_ISCREATE', payload: false } )
         dispatch( {type: 'ADD_POST', payload: {
-            author: 'Mitya',
-            title: 'Arsenal',
-            content: 'We return to Premier League action on Saturday afternoon, when Southampton visit Emirates Stadium.'
+            title: 'General Soft',
+            author: 'Roma',
+            content: 'Наиболее вероятный сценарий при увольнении Эмери - это Юнберг+Боулд. Это даст клубу возможность найти кандидата на замену Эмери уже к лету. '
         }} )
       }
     })

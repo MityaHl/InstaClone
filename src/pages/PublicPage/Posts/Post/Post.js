@@ -41,11 +41,12 @@ class Post extends Component {
       }
 
     render(){
+      console.log(this.props);
         return(
             <Card className={css(styles.card)}>
                 <CardHeader 
                     avatar = {<Avatar src="https://gisfit-production.web.app/assets/img/logo.png"/>}
-                    title = {<Typography>Author</Typography>}
+                    title = {<Typography>{this.props.postInfo}</Typography>}
                     action={
                     
                         <IconButton  onClick={this.props.onOpenPost}>

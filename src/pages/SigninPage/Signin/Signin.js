@@ -54,8 +54,8 @@ export default function Signin () {
                 Enter
             </Button>
 
-            <Link to='/login'>
-              <Typography className = { css(styles.blackLink) }>
+            <Link to='/login' className = { css(styles.blackLink) }>
+              <Typography >
                 LogIn
               </Typography>
             </Link>

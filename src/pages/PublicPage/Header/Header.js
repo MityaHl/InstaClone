@@ -4,13 +4,8 @@ import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
 import AppBar from '@material-ui/core/AppBar';
 import InstagramIcon from '@material-ui/icons/Instagram';
-import IconButton from '@material-ui/core/IconButton';
-import { makeStyles } from '@material-ui/core/styles';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import Toolbar from '@material-ui/core/Toolbar';
-import purple from '@material-ui/core/colors/purple';
-import MenuItem from '@material-ui/core/MenuItem';
-import Menu from '@material-ui/core/Menu';
 import PersonIcon from '@material-ui/icons/Person';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import {Link} from "react-router-dom";
@@ -43,7 +38,7 @@ import styles from './HeaderStyles';
                 <InstagramIcon className={ css(styles.logo) }/>
                 <Typography variant="h6">
                   <Link to='/'  className={ css(styles.link) }>
-                    InstaClone
+                   InstaClone
                   </Link>
                 </Typography>
               </Grid>

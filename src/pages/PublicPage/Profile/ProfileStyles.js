@@ -25,6 +25,19 @@ export default StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'flex-start'
   },
+  profileName: {
+    display: 'flex', 
+    flexDirection: 'row',
+    alignItems: 'center'
+  },
+  nickName: {
+    fontSize: '55px'
+  },
+  deleteButton: {
+    marginTop: '5px',
+    marginLeft: '30px',
+    height: '60%'
+  },
   textField: {
     marginRight: '20px'
   },

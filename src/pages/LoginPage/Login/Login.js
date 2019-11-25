@@ -51,8 +51,8 @@ render() {
                 Enter
             </Button>
 
-            <Link to='/signin' >
-              <Typography className={ css(styles.blackLink) }>
+            <Link to='/signin' className={ css(styles.blackLink) }>
+              <Typography >
                 SignIn
               </Typography>
             </Link>
