@@ -35,7 +35,9 @@ class Posts extends Component {
     super(props);
     this.state = {
       isCreate: false,
-      isFullPost: false
+      isFullPost: false,
+      findByUserName: '',
+      findByTag: ''
     }
     this.isFullPost = this.isFullPost.bind(this);
     this.isCreate = this.isCreate.bind(this);
@@ -54,7 +56,11 @@ class Posts extends Component {
   }
 
   render() {
-    let posts = this.props.state.posts;
+    let posts = this.props.state.posts.filter((post) => (
+      post.author.includes(this.state.findByUserName)
+    )).filter((post) => (
+      post.tag.includes(this.state.findByTag)
+    ));
     console.log(posts);
     return (
       <div className="App">
@@ -86,15 +92,22 @@ class Posts extends Component {
                   <div className={css(styles.menuContent)}>
                     <FormControl className={css(styles.card)}>
                       <Typography variant="h5" color="textSecondary" component="h6">
-                        Find user.
+                        Find post by user.
                       </Typography>
                       <TextField
                         id="outlined-basic"
+                        value={this.state.findByUserName}
+                        onChange={ (event) => {
+                            this.setState({
+                              findByUserName: event.target.value
+                            })
+                          }
+                        }
                         label="Login"
                         margin="normal"
                         variant="outlined"
                       />
-                      <FormHelperText>Find user by login.</FormHelperText>
+                      <FormHelperText>Find post by user.</FormHelperText>
                     </FormControl>
                     <FormControl className={css(styles.formControl)}>
                       <Typography variant="h5" color="textSecondary" component="h6">
@@ -102,10 +115,16 @@ class Posts extends Component {
                       </Typography>
                       <TextField
                         id="outlined-basic"
-                        
                         label="Tag"
                         margin="normal"
                         variant="outlined"
+                        value={this.state.findByTag}
+                        onChange={ (event) => {
+                            this.setState({
+                              findByTag: event.target.value
+                            })
+                          }
+                        }
                       />
                       <FormHelperText >Find post by tag.</FormHelperText>
                     </FormControl>
