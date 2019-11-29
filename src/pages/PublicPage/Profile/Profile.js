@@ -4,21 +4,10 @@ import Grid from '@material-ui/core/Grid';
 import Avatar from '@material-ui/core/Avatar';
 import TextField from '@material-ui/core/TextField';
 import Typography from '@material-ui/core/Typography';
-import Card from '@material-ui/core/Card';
-import CardActions from '@material-ui/core/CardActions';
-import CardContent from '@material-ui/core/CardContent';
-import CardHeader from '@material-ui/core/CardHeader';
-import CardMedia from '@material-ui/core/CardMedia';
-import Favorite from '@material-ui/icons/Favorite';
-import FavoriteBorder from '@material-ui/icons/FavoriteBorder';
-import IconButton from '@material-ui/core/IconButton';
-import MoreVertIcon from '@material-ui/icons/MoreVert';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Checkbox from '@material-ui/core/Checkbox';
 import Button from '@material-ui/core/Button';
 import ProfilePost from './ProfilePost/ProfilePost';
-import Box from '@material-ui/core/Box';
 import DeleteProfile from './DeleteProfile/DeleteProfile';
+import OnePostEdit from './OnePostEdit/OnePostEdit';
 import { css } from 'aphrodite';
 import styles from './ProfileStyles';
 import { connect } from 'react-redux';
@@ -87,6 +76,7 @@ render() {
         </Grid>
       </Container>
        <DeleteProfile/>
+       <OnePostEdit/>
     </div>
   );
 }
@@ -100,6 +90,9 @@ export default connect(
   dispatch => ({
     onDeleteProfile: () => {
         dispatch( {type: 'CHANGE_IS_DELETE_PROFILE', payload: true } )
+      },
+    onEditPost: () => {
+        dispatch( {type: 'CHANGE_IS_EDIT_POST', payload: true } )
       }
   })
 )(Profile); 

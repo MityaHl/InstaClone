@@ -1,12 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import {Redirect} from "react-router-dom";
-
 class Login extends Component {
 
-constructor(props) {
-  super(props);
-}
 
 componentWillMount() {
     this.props.onAuth();

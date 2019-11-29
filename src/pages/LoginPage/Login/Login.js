@@ -12,9 +12,6 @@ import styles from './LoginStyles';
 
 class Login extends Component {
 
-constructor(props) {
-  super(props);
-}
 
 render() {
   return (

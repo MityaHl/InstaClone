@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
-import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
 import Avatar from '@material-ui/core/Avatar';
-import TextField from '@material-ui/core/TextField';
 import Typography from '@material-ui/core/Typography';
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
@@ -15,26 +13,22 @@ import IconButton from '@material-ui/core/IconButton';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
-import Button from '@material-ui/core/Button';
 import { css } from 'aphrodite';
+import { connect } from 'react-redux';
 import styles from '../ProfileStyles';
 
-class ProfilePost extends Component {
-    constructor(props) {
-        super(props);
-    }
-
+class ProfilePost extends Component { 
 
     render() {
       console.log(this.props);
         return(
-            <Grid item xs={4}>
+            <Grid item md={4} sm={6} xs={12}>
             <Card >
               <CardHeader 
                 avatar = {<Avatar src="https://gisfit-production.web.app/assets/img/logo.png"/>}
                 title = {<Typography>{this.props.postInfo}</Typography>}
                 action={
-                  <IconButton aria-label="settings">
+                  <IconButton aria-label="settings" onClick={this.props.onEditPost}>
                     <MoreVertIcon />
                   </IconButton>
                 }
@@ -60,7 +54,15 @@ class ProfilePost extends Component {
           </Grid>
         )
     }
-
 }
 
-export default ProfilePost;
+export default connect(
+  state => ({
+    state: state
+  }),
+  dispatch => ({
+    onEditPost: () => {
+        dispatch( {type: 'CHANGE_IS_EDIT_POST', payload: true } )
+      }
+  })
+)(ProfilePost);

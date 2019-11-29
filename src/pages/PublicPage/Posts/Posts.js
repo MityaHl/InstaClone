@@ -1,29 +1,14 @@
 import React, { Component } from 'react';
 import Container from '@material-ui/core/Container';
-import Card from '@material-ui/core/Card';
-import CardActions from '@material-ui/core/CardActions';
-import CardContent from '@material-ui/core/CardContent';
-import CardHeader from '@material-ui/core/CardHeader';
-import CardMedia from '@material-ui/core/CardMedia';
 import Typography from '@material-ui/core/Typography';
-import Avatar from '@material-ui/core/Avatar';
 import Grid from '@material-ui/core/Grid';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Checkbox from '@material-ui/core/Checkbox';
-import Favorite from '@material-ui/icons/Favorite';
-import FavoriteBorder from '@material-ui/icons/FavoriteBorder';
-import { makeStyles } from '@material-ui/core/styles';
-import IconButton from '@material-ui/core/IconButton';
 import { FormControl } from '@material-ui/core';
 import { TextField } from '@material-ui/core';
 import { FormHelperText } from '@material-ui/core';
-import KeyboardArrowRightIcon from '@material-ui/icons/KeyboardArrowRight';
-import {Link} from "react-router-dom";
-import Dialog from '@material-ui/core/Dialog';
 import Button from '@material-ui/core/Button';
-import CreatePost from './CreatePost/CreatePost';
-import Post from './Post/Post';
-import OnePost from './OnePost/OnePost';
+import CreatePostContainer from './CreatePost/CreatePostContainer';
+import PostContainer from './Post/PostContainer';
+import OnePostContainer from './OnePost/OnePostContainer';
 import { connect } from 'react-redux';
 import { css } from 'aphrodite';
 import styles from './PostsStyles';
@@ -39,17 +24,15 @@ class Posts extends Component {
       findByUserName: '',
       findByTag: ''
     }
-    this.isFullPost = this.isFullPost.bind(this);
-    this.isCreate = this.isCreate.bind(this);
   }
 
-  isFullPost() {
+  isFullPost = () => {
     this.setState({
       isFullPost: !this.state.isFullPost
     })
   }
 
-  isCreate() {
+  isCreate = () => {
     this.setState({
       isCreate: !this.state.isCreate
     })
@@ -61,7 +44,6 @@ class Posts extends Component {
     )).filter((post) => (
       post.tag.includes(this.state.findByTag)
     ));
-    console.log(posts);
     return (
       <div className="App">
         <Container maxWidth="md" className={css(styles.card)}>
@@ -71,7 +53,7 @@ class Posts extends Component {
             direction="row"
             spacing={3}
           >   
-                <Grid item xs={9}
+                <Grid item md={9}
                   container
                   direction='column'
                   alignItems='center'
@@ -79,12 +61,12 @@ class Posts extends Component {
                   
                 {
                   posts.map((post, index) => (
-                    <Post key={index} postInfo={post.author}/>
+                    <PostContainer key={index} postInfo={post.author}/>
                   ))
                 }
                   
                 </Grid>
-                  <Grid item xs={3}
+                  <Grid item md={3}
                     container
                     direction='column'
                     alignItems='center' 
@@ -136,21 +118,12 @@ class Posts extends Component {
                   </div>  
                 </Grid>
           </Grid>
-          <OnePost/>
-          <CreatePost/>
+          <OnePostContainer/>
+          <CreatePostContainer/>
         </Container>
       </div>
     );
   } 
 }
 
-export default connect( 
-  state => ({
-    state: state
-  }),
-  dispatch => ({
-    onAddPost: () => {
-      dispatch( {type: 'CHANGE_ISCREATE', payload: true } )
-    },
-  })
-)(Posts); 
+export default Posts;

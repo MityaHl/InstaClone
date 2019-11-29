@@ -1,10 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import Grid from '@material-ui/core/Grid';
-import DeleteIcon from '@material-ui/icons/Delete';
-import Paper from '@material-ui/core/Paper';
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
 import { css } from 'aphrodite';
 import DeleteOutlineIcon from '@material-ui/icons/DeleteOutline';
 import Table from '@material-ui/core/Table';
@@ -16,11 +11,6 @@ import styles from './UsersListStyles';
 
 
 class UsersList extends Component {
-
-    constructor(props) {
-    super(props);
-    
-    }
 
     render() {
         return (

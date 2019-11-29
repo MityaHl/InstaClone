@@ -12,7 +12,6 @@ import Favorite from '@material-ui/icons/Favorite';
 import FavoriteBorder from '@material-ui/icons/FavoriteBorder';
 import IconButton from '@material-ui/core/IconButton';
 import KeyboardArrowRightIcon from '@material-ui/icons/KeyboardArrowRight';
-import { connect } from 'react-redux';
 import { css } from 'aphrodite';
 import styles from './PostStyles';
 
@@ -24,35 +23,30 @@ class Post extends Component {
           isCreate: false,
           isFullPost: false
         }
-        this.isFullPost = this.isFullPost.bind(this);
-        this.isCreate = this.isCreate.bind(this);
       }
     
-      isFullPost() {
+      isFullPost = () => {
         this.setState({
           isFullPost: !this.state.isFullPost
         })
       }
     
-      isCreate() {
+      isCreate = () => {
         this.setState({
           isCreate: !this.state.isCreate
         })
       }
 
     render(){
-      console.log(this.props);
         return(
             <Card className={css(styles.card)}>
                 <CardHeader 
                     avatar = {<Avatar src="https://gisfit-production.web.app/assets/img/logo.png"/>}
                     title = {<Typography>{this.props.postInfo}</Typography>}
                     action={
-                    
                         <IconButton  onClick={this.props.onOpenPost}>
                         <KeyboardArrowRightIcon/>
                         </IconButton>
-                    
                     }
                     subheader="September 14, 2016"
                 />
@@ -77,13 +71,4 @@ class Post extends Component {
     }
 }
 
-export default connect( 
-  state => ({
-    state: state
-  }),
-  dispatch => ({
-    onOpenPost: () => {
-        dispatch( {type: 'CHANGE_ISOPEN_POST', payload: true } )
-      }
-  })
-)(Post); 
+export default Post; 

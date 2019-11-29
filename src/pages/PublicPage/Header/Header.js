@@ -4,10 +4,7 @@ import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
 import AppBar from '@material-ui/core/AppBar';
 import InstagramIcon from '@material-ui/icons/Instagram';
-import AccountCircle from '@material-ui/icons/AccountCircle';
 import Toolbar from '@material-ui/core/Toolbar';
-import PersonIcon from '@material-ui/icons/Person';
-import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import {Link} from "react-router-dom";
 import HeaderMenu from './HeaderMenu/HeaderMenu';
 import { connect } from 'react-redux';
@@ -50,7 +47,7 @@ import styles from './HeaderStyles';
                 justify="center"
               >
                 {
-                  this.props.state.isAuth ? (
+                  this.props.state.mainValues.isAuth ? (
                      <HeaderMenu/>
                   ) : (
                     <div></div>
@@ -66,13 +63,4 @@ import styles from './HeaderStyles';
     }
   }
 
-  export default connect( 
-  state => ({
-    state: state
-  }),
-  dispatch => ({
-    onAuth: () => {
-        dispatch( {type: 'CHANGE_IS_AUTH', payload: true } )
-      }
-  })
-)(Header)
+  export default Header;

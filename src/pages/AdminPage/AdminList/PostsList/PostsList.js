@@ -12,11 +12,6 @@ import DeleteOutlineIcon from '@material-ui/icons/DeleteOutline';
 
 class PostsList extends Component {
 
-    constructor(props) {
-    super(props);
-    
-    }
-
     render() {
         return (
             <Table

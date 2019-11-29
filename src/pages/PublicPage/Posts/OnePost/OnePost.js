@@ -12,7 +12,6 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
 import Avatar from '@material-ui/core/Avatar';
 import Dialog from '@material-ui/core/Dialog';
-import DialogContent from '@material-ui/core/DialogContent';
 import { connect } from 'react-redux';
 import { css } from 'aphrodite';
 import styles from './OnePostStyles';
@@ -22,7 +21,7 @@ class OnePost extends Component {
   
 render() {
     return (   
-          <Dialog fullWidth={true} open={this.props.state.isOpenPost}  onBackdropClick={
+          <Dialog fullWidth={true} open={this.props.state.mainValues.isOpenPost}  onBackdropClick={
               this.props.onOpenPost
           }>
             <Container className={css(styles.cardOne)}>
@@ -54,17 +53,6 @@ render() {
       );
 }
 
-  
-  
 }
 
-export default connect( 
-    state => ({
-      state: state
-    }),
-    dispatch => ({
-      onOpenPost: () => {
-        dispatch( {type: 'CHANGE_ISOPEN_POST', payload: false } )
-      }
-    })
-  )(OnePost)
+export default OnePost;
