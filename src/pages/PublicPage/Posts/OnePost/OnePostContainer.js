@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import OnePost from './OnePost';
 
 const mapStateToProps = state => ({
-    state: state
+    isOpenPost: state.mainValues.isOpenPost
   });
 
 const mapDispatchToProps =  dispatch => ({

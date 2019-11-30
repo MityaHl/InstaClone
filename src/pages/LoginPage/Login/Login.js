@@ -10,10 +10,8 @@ import { css } from 'aphrodite';
 import styles from './LoginStyles';
 
 
-class Login extends Component {
+const Login = ({state , onAuthTrue}) => {
 
-
-render() {
   return (
     <div >
       <Container maxWidth="sm">
@@ -44,7 +42,7 @@ render() {
                 margin="normal"
                 variant="outlined"
             />
-            <Button variant="contained" color="secondary" className={ css(styles.button) } onClick={this.props.onAuth}>
+            <Button variant="contained" color="secondary" className={ css(styles.button) } onClick={onAuthTrue}>
                 Enter
             </Button>
 
@@ -60,16 +58,5 @@ render() {
   );
 }
 
-}
-
-export default connect( 
-  state => ({
-    state: state
-  }),
-  dispatch => ({
-    onAuth: () => {
-        dispatch( {type: 'CHANGE_IS_AUTH', payload: true } )
-      }
-  })
-)(Login)
+export default Login;
 

@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+
+
 class Login extends Component {
 
-
-componentWillMount() {
-    this.props.onAuth();
-}
+  componentWillMount() {
+      this.props.onAuth();
+  }
 
 render() {
     if(!this.props.state.isAuth) {
@@ -15,9 +16,7 @@ render() {
         }
 
     return (
-        <div >
-
-        </div>
+        <div/>
     );
 }
 

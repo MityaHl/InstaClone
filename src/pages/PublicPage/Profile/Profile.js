@@ -5,20 +5,20 @@ import Avatar from '@material-ui/core/Avatar';
 import TextField from '@material-ui/core/TextField';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
-import ProfilePost from './ProfilePost/ProfilePost';
-import DeleteProfile from './DeleteProfile/DeleteProfile';
-import OnePostEdit from './OnePostEdit/OnePostEdit';
+import ProfilePostContainer from './ProfilePost/ProfilePostContainer';
+import DeleteProfileContainer from './DeleteProfile/DeleteProfileContainer';
+import OnePostEditContainer from './OnePostEdit/OnePostEditContainer';
 import { css } from 'aphrodite';
 import styles from './ProfileStyles';
 import { connect } from 'react-redux';
 
 
+const Profile = ({posts, onDeleteProfile}) => {
 
+  const deleteProfile = () => {
+    onDeleteProfile();
+  }
 
-class Profile extends Component {
-
-
-render() {
   return (
     <div>
       <Container className={css(styles.profileWrapper)}>
@@ -36,7 +36,7 @@ render() {
               <Typography className={css(styles.nickName)}>
                 p.trava
               </Typography>
-              <Button variant="outlined" color="secondary" onClick={this.props.onDeleteProfile} className={css(styles.deleteButton)}>
+              <Button variant="outlined" color="secondary" onClick={deleteProfile} className={css(styles.deleteButton)}>
                 Delete profile
               </Button>
             </div>
@@ -69,31 +69,17 @@ render() {
           spacing={3}
         >
           {
-            this.props.state.posts.map((post, index) => (
-              <ProfilePost key={index} postInfo={post.author}/>
+            posts.map((post, index) => (
+              <ProfilePostContainer key={index} postInfo={post.author}/>
             ))
           }
         </Grid>
       </Container>
-       <DeleteProfile/>
-       <OnePostEdit/>
+       <DeleteProfileContainer/>
+       <OnePostEditContainer/>
     </div>
   );
 }
-  
-}
 
-export default connect( 
-  state => ({
-    state: state
-  }),
-  dispatch => ({
-    onDeleteProfile: () => {
-        dispatch( {type: 'CHANGE_IS_DELETE_PROFILE', payload: true } )
-      },
-    onEditPost: () => {
-        dispatch( {type: 'CHANGE_IS_EDIT_POST', payload: true } )
-      }
-  })
-)(Profile); 
+export default Profile;
 

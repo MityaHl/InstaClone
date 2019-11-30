@@ -11,9 +11,8 @@ import { connect } from 'react-redux';
 import { css } from 'aphrodite';
 import styles from './HeaderStyles';
 
-  class Header extends Component {
-    
-    render() {
+  const Header = ({isAuth, onAuth}) => {
+
       return (
       <AppBar position="sticky" className={ css(styles.header) }>
         <Container maxWidth="lg">
@@ -47,7 +46,7 @@ import styles from './HeaderStyles';
                 justify="center"
               >
                 {
-                  this.props.state.mainValues.isAuth ? (
+                  isAuth ? (
                      <HeaderMenu/>
                   ) : (
                     <div></div>
@@ -60,7 +59,6 @@ import styles from './HeaderStyles';
         </Container>
       </AppBar>
     );
-    }
   }
 
   export default Header;

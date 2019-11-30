@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import Container from '@material-ui/core/Container';
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
@@ -14,116 +14,95 @@ import { css } from 'aphrodite';
 import styles from './PostsStyles';
 
 
-class Posts extends Component {
-  
-  constructor(props) {
-    super(props);
-    this.state = {
-      isCreate: false,
-      isFullPost: false,
-      findByUserName: '',
-      findByTag: ''
-    }
-  }
+const Posts = ({posts, onAddPost}) => {
 
-  isFullPost = () => {
-    this.setState({
-      isFullPost: !this.state.isFullPost
-    })
-  }
+  const [findByUserName, setFindByUserName] = useState('');
+  const [findByTag, setFindByTag] = useState('');
 
-  isCreate = () => {
-    this.setState({
-      isCreate: !this.state.isCreate
-    })
-  }
+  const addPost = () => {
+    onAddPost();
+  };
 
-  render() {
-    let posts = this.props.state.posts.filter((post) => (
-      post.author.includes(this.state.findByUserName)
-    )).filter((post) => (
-      post.tag.includes(this.state.findByTag)
-    ));
-    return (
-      <div className="App">
-        <Container maxWidth="md" className={css(styles.card)}>
-  
-          <Grid 
-            container
-            direction="row"
-            spacing={3}
-          >   
-                <Grid item md={9}
+  let sortPosts = posts.filter((post) => (
+    post.author.includes(findByUserName)
+  )).filter((post) => (
+    post.tag.includes(findByTag)
+  ));
+  return (
+    <div className="App">
+      <Container maxWidth="md" className={css(styles.card)}>
+
+        <Grid 
+          container
+          direction="row"
+          spacing={3}
+        >   
+              <Grid item md={9}
+                container
+                direction='column'
+                alignItems='center'
+              >
+                
+              {
+                sortPosts.map((post, index) => (
+                  <PostContainer key={index} postInfo={post.author}/>
+                ))
+              }
+                
+              </Grid>
+                <Grid item md={3}
                   container
                   direction='column'
-                  alignItems='center'
+                  alignItems='center' 
                 >
-                  
-                {
-                  posts.map((post, index) => (
-                    <PostContainer key={index} postInfo={post.author}/>
-                  ))
-                }
-                  
-                </Grid>
-                  <Grid item md={3}
-                    container
-                    direction='column'
-                    alignItems='center' 
-                  >
-                  <div className={css(styles.menuContent)}>
-                    <FormControl className={css(styles.card)}>
-                      <Typography variant="h5" color="textSecondary" component="h6">
-                        Find post by user.
-                      </Typography>
-                      <TextField
-                        id="outlined-basic"
-                        value={this.state.findByUserName}
-                        onChange={ (event) => {
-                            this.setState({
-                              findByUserName: event.target.value
-                            })
-                          }
+                <div className={css(styles.menuContent)}>
+                  <FormControl className={css(styles.card)}>
+                    <Typography variant="h5" color="textSecondary" component="h6">
+                      Find post by user.
+                    </Typography>
+                    <TextField
+                      id="outlined-basic"
+                      value={findByUserName}
+                      onChange={ (event) => {
+                            setFindByUserName(event.target.value); 
                         }
-                        label="Login"
-                        margin="normal"
-                        variant="outlined"
-                      />
-                      <FormHelperText>Find post by user.</FormHelperText>
-                    </FormControl>
-                    <FormControl className={css(styles.formControl)}>
-                      <Typography variant="h5" color="textSecondary" component="h6">
-                        Find post.
-                      </Typography>
-                      <TextField
-                        id="outlined-basic"
-                        label="Tag"
-                        margin="normal"
-                        variant="outlined"
-                        value={this.state.findByTag}
-                        onChange={ (event) => {
-                            this.setState({
-                              findByTag: event.target.value
-                            })
-                          }
+                      }
+                      label="Login"
+                      margin="normal"
+                      variant="outlined"
+                    />
+                    <FormHelperText>Find post by user.</FormHelperText>
+                  </FormControl>
+                  <FormControl className={css(styles.formControl)}>
+                    <Typography variant="h5" color="textSecondary" component="h6">
+                      Find post.
+                    </Typography>
+                    <TextField
+                      id="outlined-basic"
+                      label="Tag"
+                      margin="normal"
+                      variant="outlined"
+                      value={findByTag}
+                      onChange={ (event) => {
+                          setFindByTag(event.target.value); 
                         }
-                      />
-                      <FormHelperText >Find post by tag.</FormHelperText>
-                    </FormControl>
-                    <div className={css(styles.buttonWrapper)}>
-                      <Button variant="contained" color="secondary" className={css(styles.button)} onClick={this.props.onAddPost}>
-                        Create Post
-                      </Button>
-                    </div>
-                  </div>  
-                </Grid>
-          </Grid>
-          <OnePostContainer/>
-          <CreatePostContainer/>
-        </Container>
-      </div>
-    );
-  } 
+                      }
+                    />
+                    <FormHelperText >Find post by tag.</FormHelperText>
+                  </FormControl>
+                  <div className={css(styles.buttonWrapper)}>
+                    <Button variant="contained" color="secondary" className={css(styles.button)} onClick={addPost}>
+                      Create Post
+                    </Button>
+                  </div>
+                </div>  
+              </Grid>
+        </Grid>
+        <OnePostContainer/>
+        <CreatePostContainer/>
+      </Container>
+    </div>
+  );
 }
 
 export default Posts;

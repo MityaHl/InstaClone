@@ -1,18 +1,18 @@
 import { connect } from 'react-redux';
-import Posts from './Posts';
-import { openCreating } from '../../../store/actions/mainValues';
+import { isDeleteTrue } from '../../../store/actions/mainValues';
+import Profile from './Profile';
 
 const mapStateToProps = state => ({
     posts: state.posts
   });
 
 const mapDispatchToProps =  dispatch => ({
-    onAddPost: () => {
-      dispatch(openCreating());
-    }
+    onDeleteProfile: () => {
+        dispatch(isDeleteTrue());
+      }
   });
 
 export default connect( 
     mapStateToProps,
     mapDispatchToProps
-)(Posts); 
+)(Profile);

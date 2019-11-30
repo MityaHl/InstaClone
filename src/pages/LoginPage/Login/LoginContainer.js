@@ -1,18 +1,18 @@
 import { connect } from 'react-redux';
-import Posts from './Posts';
-import { openCreating } from '../../../store/actions/mainValues';
+import { isAuthTrue } from '../../../store/actions/mainValues';
+import Login from './Login';
 
 const mapStateToProps = state => ({
-    posts: state.posts
+    state: state
   });
 
 const mapDispatchToProps =  dispatch => ({
-    onAddPost: () => {
-      dispatch(openCreating());
+    onAuthTrue: () => {
+        dispatch(isAuthTrue());
     }
   });
 
 export default connect( 
     mapStateToProps,
     mapDispatchToProps
-)(Posts); 
+)(Login);

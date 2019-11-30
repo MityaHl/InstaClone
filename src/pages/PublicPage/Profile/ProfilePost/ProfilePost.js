@@ -17,52 +17,44 @@ import { css } from 'aphrodite';
 import { connect } from 'react-redux';
 import styles from '../ProfileStyles';
 
-class ProfilePost extends Component { 
+const ProfilePost = ({postInfo, isCreate, onEditPost}) => { 
 
-    render() {
-      console.log(this.props);
-        return(
-            <Grid item md={4} sm={6} xs={12}>
-            <Card >
-              <CardHeader 
-                avatar = {<Avatar src="https://gisfit-production.web.app/assets/img/logo.png"/>}
-                title = {<Typography>{this.props.postInfo}</Typography>}
-                action={
-                  <IconButton aria-label="settings" onClick={this.props.onEditPost}>
-                    <MoreVertIcon />
-                  </IconButton>
-                }
-                subheader="September 14, 2016"
-              />
-              <CardMedia 
-                 className={css(styles.media)}
-                image="https://sun9-67.userapi.com/c855336/v855336480/15f3ad/tjtBbYGdwXk.jpg"
-                title="Paella dish"
-              />
-              <CardContent>
-                <Typography variant="body2" color="textSecondary" component="p">
-                  Контент.
-                </Typography>
-              </CardContent>
-              <CardActions>
-                <FormControlLabel 
-                  control={<Checkbox  icon={<FavoriteBorder />} checkedIcon={<Favorite />} value="checkedH" />}
-                  label="Like"
-                />
-              </CardActions>
-            </Card>
-          </Grid>
-        )
-    }
+  const editPost = () => {
+    onEditPost();
+  }
+
+  return(
+      <Grid item md={4} sm={6} xs={12}>
+      <Card >
+        <CardHeader 
+          avatar = {<Avatar src="https://gisfit-production.web.app/assets/img/logo.png"/>}
+          title = {<Typography>{postInfo}</Typography>}
+          action={
+            <IconButton aria-label="settings" onClick={editPost}>
+              <MoreVertIcon />
+            </IconButton>
+          }
+          subheader="September 14, 2016"
+        />
+        <CardMedia 
+            className={css(styles.media)}
+          image="https://sun9-67.userapi.com/c855336/v855336480/15f3ad/tjtBbYGdwXk.jpg"
+          title="Paella dish"
+        />
+        <CardContent>
+          <Typography variant="body2" color="textSecondary" component="p">
+            Контент.
+          </Typography>
+        </CardContent>
+        <CardActions>
+          <FormControlLabel 
+            control={<Checkbox  icon={<FavoriteBorder />} checkedIcon={<Favorite />} value="checkedH" />}
+            label="Like"
+          />
+        </CardActions>
+      </Card>
+    </Grid>
+  )
 }
 
-export default connect(
-  state => ({
-    state: state
-  }),
-  dispatch => ({
-    onEditPost: () => {
-        dispatch( {type: 'CHANGE_IS_EDIT_POST', payload: true } )
-      }
-  })
-)(ProfilePost);
+export default ProfilePost;

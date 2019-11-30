@@ -15,60 +15,42 @@ import KeyboardArrowRightIcon from '@material-ui/icons/KeyboardArrowRight';
 import { css } from 'aphrodite';
 import styles from './PostStyles';
 
-class Post extends Component {
+const Post = ({state, onOpenPost, postInfo}) => {
 
-    constructor(props) {
-        super(props);
-        this.state = {
-          isCreate: false,
-          isFullPost: false
-        }
-      }
-    
-      isFullPost = () => {
-        this.setState({
-          isFullPost: !this.state.isFullPost
-        })
-      }
-    
-      isCreate = () => {
-        this.setState({
-          isCreate: !this.state.isCreate
-        })
-      }
+  const openPost = () => {
+    onOpenPost();
+  }
 
-    render(){
-        return(
-            <Card className={css(styles.card)}>
-                <CardHeader 
-                    avatar = {<Avatar src="https://gisfit-production.web.app/assets/img/logo.png"/>}
-                    title = {<Typography>{this.props.postInfo}</Typography>}
-                    action={
-                        <IconButton  onClick={this.props.onOpenPost}>
-                        <KeyboardArrowRightIcon/>
-                        </IconButton>
-                    }
-                    subheader="September 14, 2016"
-                />
-                <CardMedia 
-                    className={css(styles.media)}
-                    image="https://sun9-67.userapi.com/c855336/v855336480/15f3ad/tjtBbYGdwXk.jpg"
-                    title="Paella dish"
-                />
-                <CardContent>
-                    <Typography variant="body2" color="textSecondary" component="p">
-                      We return to Premier League action on Saturday afternoon, when Southampton visit Emirates Stadium.
-                    </Typography>
-                </CardContent>
-                <CardActions>
-                    <FormControlLabel 
-                    control={<Checkbox className={css(styles.like)} icon={<FavoriteBorder />} checkedIcon={<Favorite />} value="checkedH" />}
-                    label="Like"
-                    />
-                </CardActions>
-            </Card>
-        )
-    }
+  return(
+    <Card className={css(styles.card)}>
+        <CardHeader 
+            avatar = {<Avatar src="https://gisfit-production.web.app/assets/img/logo.png"/>}
+            title = {<Typography>{postInfo}</Typography>}
+            action={
+                <IconButton  onClick={openPost}>
+                <KeyboardArrowRightIcon/>
+                </IconButton>
+            }
+            subheader="September 14, 2016"
+        />
+        <CardMedia 
+            className={css(styles.media)}
+            image="https://sun9-67.userapi.com/c855336/v855336480/15f3ad/tjtBbYGdwXk.jpg"
+            title="Paella dish"
+        />
+        <CardContent>
+            <Typography variant="body2" color="textSecondary" component="p">
+              We return to Premier League action on Saturday afternoon, when Southampton visit Emirates Stadium.
+            </Typography>
+        </CardContent>
+        <CardActions>
+            <FormControlLabel 
+            control={<Checkbox className={css(styles.like)} icon={<FavoriteBorder />} checkedIcon={<Favorite />} value="checkedH" />}
+            label="Like"
+            />
+        </CardActions>
+    </Card>
+  )
 }
 
 export default Post; 

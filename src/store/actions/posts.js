@@ -8,7 +8,3 @@ export const createPost = () => ({
     }
 });
 
-export const closeCreating = () => ({
-    type: 'CHANGE_ISCREATE', 
-    payload: false 
-});

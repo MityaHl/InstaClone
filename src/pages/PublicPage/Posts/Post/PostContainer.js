@@ -1,4 +1,5 @@
 import { connect } from 'react-redux';
+import { openPost } from '../../../../store/actions/mainValues';
 import Post from './Post';
 
 const mapStateToProps = state => ({
@@ -7,7 +8,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps =  dispatch => ({
     onOpenPost: () => {
-        dispatch( {type: 'CHANGE_ISOPEN_POST', payload: true } )
+        dispatch( openPost() );
       }
   });
 

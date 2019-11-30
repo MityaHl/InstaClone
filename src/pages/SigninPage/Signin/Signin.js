@@ -9,7 +9,7 @@ import { css } from 'aphrodite';
 import styles from './SignInStyles';
 
 
-export default function Signin () {
+const Signin = () => {
 
   return (
     <div >
@@ -65,4 +65,6 @@ export default function Signin () {
     </div>
   );
 }
+
+export default Signin;
 

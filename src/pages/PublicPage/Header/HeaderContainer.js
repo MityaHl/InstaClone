@@ -1,13 +1,14 @@
 import { connect } from 'react-redux';
 import Header from './Header';
+import { isAuthTrue } from '../../../store/actions/mainValues';
 
 const mapStateToProps = state => ({
-    state: state
+    isAuth: state.mainValues.isAuth
   });
 
 const mapDispatchToProps =  dispatch => ({
     onAuth: () => {
-        dispatch( {type: 'CHANGE_IS_AUTH', payload: true } )
+        dispatch( isAuthTrue());
     }
   });
 

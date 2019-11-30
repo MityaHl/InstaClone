@@ -17,19 +17,20 @@ import { css } from 'aphrodite';
 import styles from './OnePostStyles';
 
 
-class OnePost extends Component {
+const OnePost = ({isOpenPost, onOpenPost}) => {
   
-render() {
+    const openPost = () => {
+        onOpenPost();
+    }
+
     return (   
-          <Dialog fullWidth={true} open={this.props.state.mainValues.isOpenPost}  onBackdropClick={
-              this.props.onOpenPost
-          }>
+        <Dialog fullWidth={true} open={isOpenPost}  onBackdropClick={openPost}>
             <Container className={css(styles.cardOne)}>
                 <Card>
                     <CardHeader 
-                      avatar = {<Avatar src="https://gisfit-production.web.app/assets/img/logo.png"/>}
-                      title = {<Typography>Title</Typography>}
-                      subheader="September 14, 2016"
+                        avatar = {<Avatar src="https://gisfit-production.web.app/assets/img/logo.png"/>}
+                        title = {<Typography>Title</Typography>}
+                        subheader="September 14, 2016"
                     />
                     <CardMedia 
                         image="https://sun9-67.userapi.com/c855336/v855336480/15f3ad/tjtBbYGdwXk.jpg"
@@ -49,10 +50,8 @@ render() {
                     </CardActions>
                 </Card>            
             </Container>
-          </Dialog>
-      );
-}
-
+        </Dialog>
+    )
 }
 
 export default OnePost;
