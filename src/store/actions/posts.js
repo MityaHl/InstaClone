@@ -1,10 +1,5 @@
-export const createPost = () => ({
+export const createPost = (postData) => ({
     type: 'ADD_POST', 
-    payload: {
-        title: 'General Soft',
-        author: 'Roma',
-        content: 'Наиболее вероятный сценарий при увольнении Эмери - это Юнберг+Боулд. Это даст клубу возможность найти кандидата на замену Эмери уже к лету. ',
-        tag: 'football'
-    }
+    payload: postData
 });
 

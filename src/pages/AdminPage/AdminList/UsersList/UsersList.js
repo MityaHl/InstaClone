@@ -36,7 +36,7 @@ const UsersList = ({users}) => {
                                 {user.email}
                             </TableCell>
                             <TableCell align="center">
-                                <DeleteOutlineIcon/>
+                                <DeleteOutlineIcon color={user.isDelete ? ("disabled") : ("")}/>
                             </TableCell>
                         </TableRow>
                     ))

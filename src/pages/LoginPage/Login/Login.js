@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
 import TextField from '@material-ui/core/TextField';
@@ -10,7 +10,11 @@ import { css } from 'aphrodite';
 import styles from './LoginStyles';
 
 
-const Login = ({state , onAuthTrue}) => {
+const Login = ({users , onAuthTrue}) => {
+
+  const [login, setLogin] = useState('');
+  const [password, setPassword] = useState('');
+
 
   return (
     <div >
@@ -32,6 +36,10 @@ const Login = ({state , onAuthTrue}) => {
                 helperText="Enter login"
                 margin="normal"
                 variant="outlined"
+                value={login}
+                onChange={ (e) => {
+                  setLogin(e.target.value);
+                }}
             />
             <TextField
                 id="outlined-helperText"
@@ -41,6 +49,10 @@ const Login = ({state , onAuthTrue}) => {
                 helperText="Enter Password"
                 margin="normal"
                 variant="outlined"
+                value={password}
+                onChange={ (e) => {
+                  setPassword(e.target.value);
+                }}
             />
             <Button variant="contained" color="secondary" className={ css(styles.button) } onClick={onAuthTrue}>
                 Enter

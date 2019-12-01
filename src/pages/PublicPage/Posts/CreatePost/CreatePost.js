@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux'; 
 import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
@@ -15,11 +15,22 @@ import { css } from 'aphrodite';
 import styles from './CreatePostStyles';
 
 
-const CreatePost = ({isCreate, onAddPost}) => {
+const CreatePost = ({isCreate, author, onAddPost}) => {
+
+    const [title, setTitle] = useState('');
+    const [content, setContent] = useState('');
 
     const addPost = () => {
-        onAddPost()
+        const postData = {
+            title: title,
+            content: content,
+            author: author,
+            tag: 'basketball'
+        };
+        console.log(postData);
+        onAddPost(postData);
     };
+
 
     return (
         <Dialog open={isCreate} aria-labelledby="form-dialog-title" onBackdropClick={addPost}>>
@@ -39,6 +50,12 @@ const CreatePost = ({isCreate, onAddPost}) => {
                 className={ css(styles.textField) }
                 margin="normal"
                 variant="outlined"
+                value={title}
+                onChange={
+                    (e) => {
+                        setTitle(e.target.value);
+                    }
+                }
                 />
                 <Typography variant="h6" className={ css(styles.typography) }>
                     Image
@@ -46,7 +63,6 @@ const CreatePost = ({isCreate, onAddPost}) => {
                 <input
                     style={{ display: 'none' }}
                     accept="image/*"
-
                     id="outlined-button-file"
                     multiple
                     type="file"
@@ -67,6 +83,12 @@ const CreatePost = ({isCreate, onAddPost}) => {
                     rows='5'
                     margin="normal"
                     variant="outlined"
+                    value={content}
+                    onChange={
+                        (e) => {
+                            setContent(e.target.value);
+                        }
+                    }
                 />
                 <Typography variant="h6" className={ css(styles.typography) }>
                     Tags

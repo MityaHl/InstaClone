@@ -28,7 +28,7 @@ export default connect(
   }),
   dispatch => ({
     onAuth: () => {
-        dispatch( {type: 'CHANGE_IS_AUTH', payload: false } )
+        dispatch( {type: 'DELETE_AUTH_USER', payload: {} } )
       }
   })
 )(Login)

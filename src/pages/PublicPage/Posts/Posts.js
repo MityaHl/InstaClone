@@ -16,7 +16,7 @@ import styles from './PostsStyles';
 
 const Posts = ({posts, onAddPost}) => {
 
-  const [findByUserName, setFindByUserName] = useState('');
+  const [findByUserLogin, setFindByUserLogin] = useState('');
   const [findByTag, setFindByTag] = useState('');
 
   const addPost = () => {
@@ -24,7 +24,7 @@ const Posts = ({posts, onAddPost}) => {
   };
 
   let sortPosts = posts.filter((post) => (
-    post.author.includes(findByUserName)
+    post.author.includes(findByUserLogin)
   )).filter((post) => (
     post.tag.includes(findByTag)
   ));
@@ -45,7 +45,7 @@ const Posts = ({posts, onAddPost}) => {
                 
               {
                 sortPosts.map((post, index) => (
-                  <PostContainer key={index} postInfo={post.author}/>
+                  <PostContainer key={index} postInfo={post.title}/>
                 ))
               }
                 
@@ -62,9 +62,9 @@ const Posts = ({posts, onAddPost}) => {
                     </Typography>
                     <TextField
                       id="outlined-basic"
-                      value={findByUserName}
+                      value={findByUserLogin}
                       onChange={ (event) => {
-                            setFindByUserName(event.target.value); 
+                            setFindByUserLogin(event.target.value); 
                         }
                       }
                       label="Login"

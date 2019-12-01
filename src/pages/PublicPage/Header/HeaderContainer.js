@@ -3,7 +3,7 @@ import Header from './Header';
 import { isAuthTrue } from '../../../store/actions/mainValues';
 
 const mapStateToProps = state => ({
-    isAuth: state.mainValues.isAuth
+    authUser: state.authUser
   });
 
 const mapDispatchToProps =  dispatch => ({

@@ -13,7 +13,7 @@ import styles from './ProfileStyles';
 import { connect } from 'react-redux';
 
 
-const Profile = ({posts, onDeleteProfile}) => {
+const Profile = ({posts, authUser, onDeleteProfile}) => {
 
   const deleteProfile = () => {
     onDeleteProfile();
@@ -28,13 +28,13 @@ const Profile = ({posts, onDeleteProfile}) => {
           spacing={3}
         >
           <Grid item xs={5} className={css(styles.avatarWrapper)}>
-            <Avatar alt="Polina" src="https://sun9-3.userapi.com/c841624/v841624870/42022/gliwAEljN4w.jpg" className={css(styles.avatar)} />
+            <Avatar src={authUser.image} className={css(styles.avatar)} />
           </Grid>
           <Grid item xs={7} className={css(styles.infoWrapper)}>
           
             <div className={css(styles.profileName)}>
               <Typography className={css(styles.nickName)}>
-                p.trava
+                {authUser.login}
               </Typography>
               <Button variant="outlined" color="secondary" onClick={deleteProfile} className={css(styles.deleteButton)}>
                 Delete profile
@@ -44,7 +44,7 @@ const Profile = ({posts, onDeleteProfile}) => {
               <TextField
                 id="outlined-helperText"
                 label="Name"
-                defaultValue="Polina"
+                defaultValue={authUser.name}
                 className={css(styles.textField)}
                 margin="normal"  
                 variant="outlined"
@@ -52,7 +52,7 @@ const Profile = ({posts, onDeleteProfile}) => {
               <TextField
                 id="outlined-helperText"
                 label="Surname"
-                defaultValue="Khlopyanikova"
+                defaultValue={authUser.surname}
                 className={css(styles.textField)}
                 margin="normal"
                 variant="outlined"
@@ -70,7 +70,7 @@ const Profile = ({posts, onDeleteProfile}) => {
         >
           {
             posts.map((post, index) => (
-              <ProfilePostContainer key={index} postInfo={post.author}/>
+              post.author == authUser.login ? (<ProfilePostContainer key={index} postInfo={post.author}/>) : ('')
             ))
           }
         </Grid>

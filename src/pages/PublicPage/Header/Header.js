@@ -6,12 +6,12 @@ import AppBar from '@material-ui/core/AppBar';
 import InstagramIcon from '@material-ui/icons/Instagram';
 import Toolbar from '@material-ui/core/Toolbar';
 import {Link} from "react-router-dom";
-import HeaderMenu from './HeaderMenu/HeaderMenu';
+import HeaderMenuContainer from './HeaderMenu/HeaderMenuContainer';
 import { connect } from 'react-redux';
 import { css } from 'aphrodite';
 import styles from './HeaderStyles';
 
-  const Header = ({isAuth, onAuth}) => {
+  const Header = ({authUser, onAuth}) => {
 
       return (
       <AppBar position="sticky" className={ css(styles.header) }>
@@ -46,8 +46,8 @@ import styles from './HeaderStyles';
                 justify="center"
               >
                 {
-                  isAuth ? (
-                     <HeaderMenu/>
+                  authUser.login ? (
+                     <HeaderMenuContainer/>
                   ) : (
                     <div></div>
                   )

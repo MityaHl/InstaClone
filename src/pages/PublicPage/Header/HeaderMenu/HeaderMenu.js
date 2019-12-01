@@ -10,7 +10,7 @@ import {Link} from "react-router-dom";
 import { css } from 'aphrodite';
 import styles from './HeaderMenuStyles'
 
-const HeaderMenu = () => {
+const HeaderMenu = ({authUser}) => {
     const [anchorEl, setAnchorEl] = React.useState(null);
         const handleClick = event => {
         setAnchorEl(event.currentTarget);
@@ -24,7 +24,7 @@ const HeaderMenu = () => {
         <div>
             <IconButton onClick={handleClick} className={ css(styles.link) }>
                 <Typography className="accountCircle">
-                    Mitya
+                    {authUser.login}
                 </Typography>
             <AccountCircle className="accountCircle" />
             </IconButton>

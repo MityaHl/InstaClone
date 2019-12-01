@@ -1,14 +1,14 @@
 import { connect } from 'react-redux';
-import { isAuthTrue } from '../../../store/actions/mainValues';
+import { addAuthUser } from '../../../store/actions/authUser';
 import Login from './Login';
 
 const mapStateToProps = state => ({
-    state: state
+    users: state.users
   });
 
 const mapDispatchToProps =  dispatch => ({
     onAuthTrue: () => {
-        dispatch(isAuthTrue());
+        dispatch(addAuthUser());
     }
   });
 

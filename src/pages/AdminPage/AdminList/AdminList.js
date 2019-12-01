@@ -26,7 +26,7 @@ const AdminList = () => {
                 <Tab 
                 selected
                     label="Users" 
-                    className={ css(styles.tab) }
+                    className={ pageContent ? (css(styles.tab)) : (css(styles.selectedTab)) }
                     onClick={() => {
                             setPageContent(false)
                         }
@@ -34,7 +34,7 @@ const AdminList = () => {
                 />
                 <Tab 
                     label="Posts" 
-                    className={ css(styles.tab) }
+                    className={ !pageContent ? (css(styles.tab)) : (css(styles.selectedTab)) }
                     onClick={() => {
                             setPageContent(true)
                         }
