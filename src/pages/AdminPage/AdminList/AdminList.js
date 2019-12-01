@@ -1,26 +1,19 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import Container from '@material-ui/core/Container';
 import Paper from '@material-ui/core/Paper';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
-import UsersList from './UsersList/UsersList';
-import PostsList from './PostsList/PostsList';
+import UsersListContainer from './UsersList/UsersListContainer';
+import PostsListContainer from './PostsList/PostsListContainer';
 import { connect } from 'react-redux';
 import { css } from 'aphrodite';
 import styles from './AdminListStyles';
 
 
-class AdminList extends Component {
+const AdminList = () => {
 
-constructor(props) {
-  super(props);
-  this.state = {
-      pageContent: false
-  }
-}
+    const [pageContent, setPageContent] = useState(false);
 
-
-render() {
     return (
       <Container maxWidth="md">
         <Paper className={ css(styles.paper) }>
@@ -35,43 +28,31 @@ render() {
                     label="Users" 
                     className={ css(styles.tab) }
                     onClick={() => {
-                        this.setState({
-                            pageContent: false
-                        })
-                    }}
+                            setPageContent(false)
+                        }
+                    }
                 />
                 <Tab 
                     label="Posts" 
                     className={ css(styles.tab) }
                     onClick={() => {
-                        this.setState({
-                            pageContent: true
-                        })
-                    }}
+                            setPageContent(true)
+                        }
+                    }
                 />
             </Tabs>
         </Paper>
         <Paper>
             {
-                !this.state.pageContent ? (
-                    <UsersList/>
+                !pageContent ? (
+                    <UsersListContainer/>
                 ) : (
-                    <PostsList/>
+                    <PostsListContainer/>
                 )
             }
         </Paper>
-      </Container>
-        
+      </Container>   
     );
 }
 
-}
-
-export default connect( 
-  state => ({
-    state: state
-  }),
-  dispatch => ({
-
-  })
-)(AdminList); 
+export default AdminList; 

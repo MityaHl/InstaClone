@@ -11,7 +11,7 @@ import Signin from './pages/SigninPage/Signin/Signin';
 import './App.css';
 import Container from '@material-ui/core/Container';
 import { connect } from 'react-redux';
-import AdminList from './pages/AdminPage/AdminList/AdminList';
+import AdminListContainer from './pages/AdminPage/AdminList/AdminListContainer';
         
 
 const App = () =>  {
@@ -33,7 +33,7 @@ const App = () =>  {
             </div>
             ) : (         
               <div>
-                  <Route path={'/admin'} component={ AdminList }/>
+                  <Route path={'/admin'} component={ AdminListContainer }/>
                   <Route path={'/profile'} component={ ProfileContainer }/>
                   <Route path={'/post/:id'} component={ OnePostContainer }/>
                   <Route path={'/login'} component={ LoginContainer }/>

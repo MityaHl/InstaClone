@@ -10,49 +10,40 @@ import TableRow from '@material-ui/core/TableRow';
 import styles from './UsersListStyles';
 
 
-class UsersList extends Component {
+const UsersList = ({users}) => {
 
-    render() {
-        return (
-            <Table
-            className={css(styles.table)}
-                gridStyle={{
-                    direction: 'inherit',
-                }}>
-                <TableHead>
-                    <TableRow>
-                        <TableCell align="center">UserName</TableCell>
-                        <TableCell align="center">E-mail</TableCell>
-                        <TableCell align="center">Request for delete</TableCell>
-                    </TableRow>
-                </TableHead>
-                <TableBody >
-                    {
-                        this.props.state.users.map((user, index) => (
-                            <TableRow key={index}>
-                                <TableCell component="th" scope="row" align="center">
-                                    {user.name}
-                                </TableCell>
-                                <TableCell align="center">
-                                    {user.email}
-                                </TableCell>
-                                <TableCell align="center">
-                                    <DeleteOutlineIcon/>
-                                </TableCell>
-                            </TableRow>
-                        ))
-                    }
-                </TableBody>
-            </Table>
-        );
-    }
+    return (
+        <Table
+        className={css(styles.table)}
+            gridStyle={{
+                direction: 'inherit',
+            }}>
+            <TableHead>
+                <TableRow>
+                    <TableCell align="center">UserName</TableCell>
+                    <TableCell align="center">E-mail</TableCell>
+                    <TableCell align="center">Request for delete</TableCell>
+                </TableRow>
+            </TableHead>
+            <TableBody >
+                {
+                   users.map((user, index) => (
+                        <TableRow key={index}>
+                            <TableCell component="th" scope="row" align="center">
+                                {user.name}
+                            </TableCell>
+                            <TableCell align="center">
+                                {user.email}
+                            </TableCell>
+                            <TableCell align="center">
+                                <DeleteOutlineIcon/>
+                            </TableCell>
+                        </TableRow>
+                    ))
+                }
+            </TableBody>
+        </Table>
+    );
 }
 
-export default connect( 
-  state => ({
-    state: state
-  }),
-  dispatch => ({
-
-  })
-)(UsersList); 
+export default UsersList; 
