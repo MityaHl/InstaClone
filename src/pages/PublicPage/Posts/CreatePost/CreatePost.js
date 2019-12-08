@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import Axios from 'axios';
 import { useSelector, useDispatch } from 'react-redux'; 
 import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
@@ -19,17 +20,19 @@ const CreatePost = ({isCreate, author, onAddPost}) => {
 
     const [title, setTitle] = useState('');
     const [content, setContent] = useState('');
-
-    const addPost = () => {
-        const postData = {
-            title: title,
-            content: content,
-            author: author,
-            tag: 'basketball'
-        };
-        console.log(postData);
-        onAddPost(postData);
-    };
+    
+     const addPost = () => {
+        Axios
+            .post('http://localhost:8000/addPost', {
+            title: 'Arsenal',
+            author: 'mitya-hl',
+            content: 'Наиболее вероятный сценарий при увольнении Эмери - это Юнберг+Боулд. Это даст клубу возможность найти кандидата на замену Эмери уже к лету. ',
+            tag: 'football'
+            })
+            .then(response => {
+            })
+        onAddPost();
+      }
 
 
     return (

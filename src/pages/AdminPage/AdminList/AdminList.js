@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import Axios from 'axios';
 import Container from '@material-ui/core/Container';
 import Paper from '@material-ui/core/Paper';
 import Tabs from '@material-ui/core/Tabs';
@@ -15,7 +16,7 @@ const AdminList = () => {
     const [pageContent, setPageContent] = useState(false);
 
     return (
-      <Container maxWidth="md">
+      <Container maxWidth="lg">
         <Paper className={ css(styles.paper) }>
             <Tabs
                 indicatorColor="primary"
@@ -24,7 +25,6 @@ const AdminList = () => {
                 variant="fullWidth"
             >
                 <Tab 
-                selected
                     label="Users" 
                     className={ pageContent ? (css(styles.tab)) : (css(styles.selectedTab)) }
                     onClick={() => {

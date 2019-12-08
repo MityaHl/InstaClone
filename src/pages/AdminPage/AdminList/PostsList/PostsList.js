@@ -1,4 +1,5 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect } from 'react';
+import Axios from 'axios';
 import { connect } from 'react-redux';
 import { css } from 'aphrodite';
 import styles from './PostsListStyles';
@@ -10,7 +11,21 @@ import TableRow from '@material-ui/core/TableRow';
 import DeleteOutlineIcon from '@material-ui/icons/DeleteOutline';
 
 
-const PostsList = ({posts}) => {
+const PostsList = ({posts, onQueryPosts}) => {
+
+    const query = (response) => {
+        onQueryPosts(response);
+    };
+
+   useEffect(
+     () => {
+      Axios
+        .get('http://localhost:8000/posts')
+        .then(response => {
+           query(response.data);
+        })
+      }, []
+    );
 
     return (
         <Table

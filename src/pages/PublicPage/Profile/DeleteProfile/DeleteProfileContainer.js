@@ -3,7 +3,8 @@ import { isDeleteFalse } from '../../../../store/actions/mainValues';
 import DeleteProfile from './DeleteProfile';
 
 const mapStateToProps = state => ({
-    isDeleteProfile: state.mainValues.isDeleteProfile
+    isDeleteProfile: state.mainValues.isDeleteProfile,
+    authUser: state.authUser
   });
 
 const mapDispatchToProps =  dispatch => ({

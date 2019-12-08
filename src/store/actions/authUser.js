@@ -1,6 +1,7 @@
 export const addAuthUser = () => ({
     type: 'ADD_AUTH_USER', 
     payload: {   
+        id: 1,
         login: 'mitya-hl',
         password: 123,
         name: 'Mitya',

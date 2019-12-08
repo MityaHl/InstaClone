@@ -10,7 +10,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
     onAddPost: (postData) => {
-        dispatch(createPost(postData));
+       // dispatch(createPost(postData));
         dispatch(closeCreating());
     }
   });

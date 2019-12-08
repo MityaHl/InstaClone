@@ -15,7 +15,7 @@ import KeyboardArrowRightIcon from '@material-ui/icons/KeyboardArrowRight';
 import { css } from 'aphrodite';
 import styles from './PostStyles';
 
-const Post = ({state, onOpenPost, postInfo}) => {
+const Post = ({state, onOpenPost, post}) => {
 
   const openPost = () => {
     onOpenPost();
@@ -25,13 +25,13 @@ const Post = ({state, onOpenPost, postInfo}) => {
     <Card className={css(styles.card)}>
         <CardHeader 
             avatar = {<Avatar src="https://gisfit-production.web.app/assets/img/logo.png"/>}
-            title = {<Typography>{postInfo}</Typography>}
+            title = {<Typography>{post.author}</Typography>}
             action={
                 <IconButton  onClick={openPost}>
                 <KeyboardArrowRightIcon/>
                 </IconButton>
             }
-            subheader="September 14, 2016"
+            subheader={post.created_at}
         />
         <CardMedia 
             className={css(styles.media)}
@@ -40,7 +40,7 @@ const Post = ({state, onOpenPost, postInfo}) => {
         />
         <CardContent>
             <Typography variant="body2" color="textSecondary" component="p">
-              We return to Premier League action on Saturday afternoon, when Southampton visit Emirates Stadium.
+              {post.content}
             </Typography>
         </CardContent>
         <CardActions>

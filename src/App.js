@@ -16,7 +16,7 @@ import AdminListContainer from './pages/AdminPage/AdminList/AdminListContainer';
 
 const App = () =>  {
 
-    const isAuth  = useSelector(state => state.authUser); 
+    const isAuth  = useSelector(state => state.authUser.login); 
 
     return (
       <div className="App">
@@ -25,7 +25,7 @@ const App = () =>  {
         <Container>
           <Switch>
           {        
-            !isAuth.login ? (
+            !isAuth ? (
             <div>           
                     <Route path={'/login'} component={ LoginContainer }/>
                     <Route path={'/signin'} component={ Signin }/>

@@ -28,6 +28,16 @@ export const isDeleteFalse = () => ({
     payload: false 
 });
 
+export const isDeleteUserTrue = () => ({
+    type: 'CHANGE_IS_DELETE_USER',
+    payload: true 
+});
+
+export const isDeleteUserFalse = () => ({
+    type: 'CHANGE_IS_DELETE_USER',
+    payload: false 
+});
+
 export const editPostTrue = () => ({
     type: 'CHANGE_IS_EDIT_POST', 
     payload: true 

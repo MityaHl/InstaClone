@@ -4,7 +4,8 @@ let initialState = {
     isCreate: false,
     isDeleteProfile: false,
     isEditPost: false,
-    isOpenPost: false
+    isOpenPost: false,
+    isDeleteUser: false
 }
 
 export default function instaClone(state = initialState, action) {
@@ -12,6 +13,12 @@ export default function instaClone(state = initialState, action) {
         return (
              action.payload
         )
+    }
+    if(action.type === 'CHANGE_IS_DELETE_USER') {
+        return {
+            ...state,
+            isDeleteUser: action.payload,
+        }
     }
     if(action.type === 'CHANGE_IS_AUTH') {
         return {

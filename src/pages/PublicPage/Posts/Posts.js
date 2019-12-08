@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import Axios from 'axios';
 import Container from '@material-ui/core/Container';
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
@@ -14,14 +15,31 @@ import { css } from 'aphrodite';
 import styles from './PostsStyles';
 
 
-const Posts = ({posts, onAddPost}) => {
+const Posts = ({posts, onAddPost, onQueryPosts}) => {
 
   const [findByUserLogin, setFindByUserLogin] = useState('');
   const [findByTag, setFindByTag] = useState('');
+  const [axios, setAxios] = useState({});
 
   const addPost = () => {
     onAddPost();
   };
+
+  const query = (response) => {
+      onQueryPosts(response);
+  };
+
+   useEffect(
+     () => {
+      Axios
+        .get('http://localhost:8000/posts')
+        .then(response => {
+           query(response.data);
+        })
+      }, []
+    );
+
+  
 
   let sortPosts = posts.filter((post) => (
     post.author.includes(findByUserLogin)
@@ -45,7 +63,7 @@ const Posts = ({posts, onAddPost}) => {
                 
               {
                 sortPosts.map((post, index) => (
-                  <PostContainer key={index} postInfo={post.title}/>
+                  <PostContainer key={post.id} post={post}/>
                 ))
               }
                 

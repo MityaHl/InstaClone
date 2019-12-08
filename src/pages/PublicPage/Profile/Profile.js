@@ -1,4 +1,5 @@
-import React, { Component } from 'react';
+import React, { useEffect } from 'react';
+import Axios from 'axios';
 import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
 import Avatar from '@material-ui/core/Avatar';
@@ -15,10 +16,11 @@ import { connect } from 'react-redux';
 
 const Profile = ({posts, authUser, onDeleteProfile}) => {
 
+
   const deleteProfile = () => {
     onDeleteProfile();
   }
-
+      
   return (
     <div>
       <Container className={css(styles.profileWrapper)}>

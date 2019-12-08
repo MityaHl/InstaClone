@@ -3,3 +3,8 @@ export const createPost = (postData) => ({
     payload: postData
 });
 
+export const queryPosts = (postData) => ({
+    type: 'QUERY_POST', 
+    payload: postData
+});
+
