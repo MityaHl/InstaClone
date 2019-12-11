@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Container from '@material-ui/core/Container';
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
@@ -7,7 +7,6 @@ import InstagramIcon from '@material-ui/icons/Instagram';
 import Toolbar from '@material-ui/core/Toolbar';
 import {Link} from "react-router-dom";
 import HeaderMenuContainer from './HeaderMenu/HeaderMenuContainer';
-import { connect } from 'react-redux';
 import { css } from 'aphrodite';
 import styles from './HeaderStyles';
 
@@ -49,7 +48,7 @@ import styles from './HeaderStyles';
                   authUser.login ? (
                      <HeaderMenuContainer/>
                   ) : (
-                    <div></div>
+                    <div/>
                   )
                 }
                

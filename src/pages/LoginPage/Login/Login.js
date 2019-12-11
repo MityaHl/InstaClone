@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
+import Axios from 'axios';
 import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
 import TextField from '@material-ui/core/TextField';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import {Link} from "react-router-dom";
-import { connect } from 'react-redux';
 import { css } from 'aphrodite';
 import styles from './LoginStyles';
 
@@ -15,6 +15,15 @@ const Login = ({users , onAuthTrue}) => {
   const [login, setLogin] = useState('');
   const [password, setPassword] = useState('');
 
+  const onAuth = () => {
+    Axios
+      .post('http://localhost:8000/login', {login: login, password: password})
+      .then(
+        response => {
+          onAuthTrue(response.data)
+        }
+      )
+  }
 
   return (
     <div >
@@ -54,7 +63,7 @@ const Login = ({users , onAuthTrue}) => {
                   setPassword(e.target.value);
                 }}
             />
-            <Button variant="contained" color="secondary" className={ css(styles.button) } onClick={onAuthTrue}>
+            <Button variant="contained" color="secondary" className={ css(styles.button) } onClick={onAuth}>
                 Enter
             </Button>
 

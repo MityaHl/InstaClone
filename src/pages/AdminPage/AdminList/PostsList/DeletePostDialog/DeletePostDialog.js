@@ -7,27 +7,27 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 
-const DeleteUserDialog = ({user, isDeleteUser, onDeleteUser}) => {
+const DeletePostDialog = ({post, isDeletePost, onDeletePost}) => {
 
-    const deleteAc = () => {
+    const deletePost = () => {
         Axios
-            .post('http://localhost:8000/deleteUser', user)
-            .then(onDeleteUser)
+            .post('http://localhost:8000/deletePost', post)
+            .then(onDeletePost)
     };
 
     return (
-        <Dialog open={isDeleteUser} aria-labelledby="form-dialog-title" onBackdropClick={onDeleteUser}>
-            <DialogTitle id="form-dialog-title">Delete user</DialogTitle>
+        <Dialog open={isDeletePost} aria-labelledby="form-dialog-title" onBackdropClick={onDeletePost}>
+            <DialogTitle id="form-dialog-title">Delete post</DialogTitle>
             <DialogContent>
                 <DialogContentText>
-                    Do you really want to delete this user?
+                    Do you really want to delete this post?
                 </DialogContentText>
             </DialogContent>
             <DialogActions>
-                <Button  color="primary" onClick={onDeleteUser}>
+                <Button  color="primary" onClick={onDeletePost}>
                     Cancel
                 </Button>
-                <Button  color="primary" onClick={deleteAc}>
+                <Button  color="primary" onClick={deletePost}>
                     Delete
                 </Button>
             </DialogActions>
@@ -36,4 +36,4 @@ const DeleteUserDialog = ({user, isDeleteUser, onDeleteUser}) => {
     
 }
 
-export default DeleteUserDialog; 
+export default DeletePostDialog; 

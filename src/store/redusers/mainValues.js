@@ -5,14 +5,16 @@ let initialState = {
     isDeleteProfile: false,
     isEditPost: false,
     isOpenPost: false,
-    isDeleteUser: false
+    isDeleteUser: false, 
+    isDeletePost: false
 }
 
 export default function instaClone(state = initialState, action) {
-    if(action.type === 'CHANGE_IS_ADMIN') {
-        return (
-             action.payload
-        )
+    if(action.type === 'CHANGE_IS_DELETE_POST') {
+        return {
+            ...state,
+            isDeletePost: action.payload,
+        }
     }
     if(action.type === 'CHANGE_IS_DELETE_USER') {
         return {
@@ -54,6 +56,12 @@ export default function instaClone(state = initialState, action) {
         return {
             ...state,
             isEditPost: action.payload,
+        }
+    }
+    if(action.type === 'CHANGE_IMAGE') {
+        return {
+            ...state,
+            isChangeImage: action.payload,
         }
     }
     return state;

@@ -12,5 +12,9 @@ export default StyleSheet.create({
     blackLink: {
         textDecoration: 'none',
         color: 'black'
+    },
+    menuItem: {
+        marginRight: '5px',
+        marginLeft: '5px'
     }
 })

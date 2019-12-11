@@ -5,7 +5,8 @@ import { isDeleteUserTrue } from '../../../../store/actions/mainValues';
 
 
 const mapStateToProps = state => ({
-    users: state.users
+    users: state.users, 
+    authUser: state.authUser
   });
 
 const mapDispatchToProps =  dispatch => ({

@@ -3,7 +3,8 @@ import { StyleSheet } from 'aphrodite';
 
 export default StyleSheet.create({
     grid: {
-      height: "75vh"
+      height: "40vh",
+      marginTop: '60px'
     },
     textField: {
         width: '60%',
@@ -11,7 +12,7 @@ export default StyleSheet.create({
     },
     button: {
         backgroundColor: '#ec407a',
-        marginTop: '30px',
+        marginTop: '20px',
         width: '30%',
     }, 
     blackLink: {

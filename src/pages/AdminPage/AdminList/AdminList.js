@@ -1,12 +1,10 @@
-import React, { useState, useEffect } from 'react';
-import Axios from 'axios';
+import React, { useState } from 'react';
 import Container from '@material-ui/core/Container';
 import Paper from '@material-ui/core/Paper';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import UsersListContainer from './UsersList/UsersListContainer';
 import PostsListContainer from './PostsList/PostsListContainer';
-import { connect } from 'react-redux';
 import { css } from 'aphrodite';
 import styles from './AdminListStyles';
 

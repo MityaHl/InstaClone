@@ -1,6 +1,5 @@
 import { connect } from 'react-redux';
 import CreatePost from './CreatePost';
-import { createPost } from '../../../../store/actions/posts';
 import { closeCreating } from '../../../../store/actions/mainValues';
 
 const mapStateToProps = state => ({
@@ -9,8 +8,7 @@ const mapStateToProps = state => ({
   });
 
 const mapDispatchToProps = dispatch => ({
-    onAddPost: (postData) => {
-       // dispatch(createPost(postData));
+    onAddPost: () => {
         dispatch(closeCreating());
     }
   });

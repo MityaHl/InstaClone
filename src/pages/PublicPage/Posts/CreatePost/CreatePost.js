@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Axios from 'axios';
-import { useSelector, useDispatch } from 'react-redux'; 
 import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
 import TextField from '@material-ui/core/TextField';
@@ -11,7 +10,6 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 import FormGroup from '@material-ui/core/FormGroup';
 import Typography from '@material-ui/core/Typography';
 import Multiselect from 'react-widgets/lib/Multiselect';
-import { connect } from 'react-redux';
 import { css } from 'aphrodite';
 import styles from './CreatePostStyles';
 
@@ -20,16 +18,20 @@ const CreatePost = ({isCreate, author, onAddPost}) => {
 
     const [title, setTitle] = useState('');
     const [content, setContent] = useState('');
-    
+    const [tag, setTag] = useState('');
+    const [image, setImage] = useState('https://karachaevsk-gid.ru/images/uploads/default.jpg');
+
      const addPost = () => {
         Axios
             .post('http://localhost:8000/addPost', {
-            title: 'Arsenal',
-            author: 'mitya-hl',
-            content: 'Наиболее вероятный сценарий при увольнении Эмери - это Юнберг+Боулд. Это даст клубу возможность найти кандидата на замену Эмери уже к лету. ',
-            tag: 'football'
+            title: title,
+            author: author,
+            content: content,
+            tag: tag, 
+            image: image
             })
             .then(response => {
+                
             })
         onAddPost();
       }
@@ -47,23 +49,37 @@ const CreatePost = ({isCreate, author, onAddPost}) => {
             </Typography>
             <FormGroup>
                 <TextField
-                id="outlined-search"
-                label="Title"
-                type="text"
-                className={ css(styles.textField) }
-                margin="normal"
-                variant="outlined"
-                value={title}
-                onChange={
-                    (e) => {
-                        setTitle(e.target.value);
+                    id="outlined-search"
+                    label="Title"
+                    type="text"
+                    className={ css(styles.textField) }
+                    margin="normal"
+                    variant="outlined"
+                    value={title}
+                    onChange={
+                        (e) => {
+                            setTitle(e.target.value);
+                        }
                     }
-                }
                 />
                 <Typography variant="h6" className={ css(styles.typography) }>
                     Image
                 </Typography>
-                <input
+                <TextField
+                    id="outlined-search"
+                    label="Title"
+                    type="text"
+                    className={ css(styles.textField) }
+                    margin="normal"
+                    variant="outlined"
+                    value={image}
+                    onChange={
+                        (e) => {
+                            setImage(e.target.value);
+                        }
+                    }
+                />
+                {/* <input
                     style={{ display: 'none' }}
                     accept="image/*"
                     id="outlined-button-file"
@@ -74,7 +90,7 @@ const CreatePost = ({isCreate, author, onAddPost}) => {
                     <Button variant="outlined" component="span">
                         Upload
                     </Button>
-                </label>
+                </label> */}
                 <Typography variant="h6" className={ css(styles.typography) }>
                     Content
                 </Typography>
@@ -99,6 +115,12 @@ const CreatePost = ({isCreate, author, onAddPost}) => {
                 <Multiselect
                     dropUp
                     data={["orange", "blue"]}
+
+                    onChange={
+                        (value ) => {   
+                            setTag(value);
+                        }
+                    }
                 />
             </FormGroup>
         </DialogContent>

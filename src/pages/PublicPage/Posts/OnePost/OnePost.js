@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Container from '@material-ui/core/Container';
 import Typography from '@material-ui/core/Typography';
 import Card from '@material-ui/core/Card';
@@ -12,12 +12,11 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
 import Avatar from '@material-ui/core/Avatar';
 import Dialog from '@material-ui/core/Dialog';
-import { connect } from 'react-redux';
 import { css } from 'aphrodite';
 import styles from './OnePostStyles';
 
 
-const OnePost = ({isOpenPost, onOpenPost}) => {
+const OnePost = ({post, isOpenPost, onOpenPost}) => {
   
     const openPost = () => {
         onOpenPost();
@@ -29,7 +28,7 @@ const OnePost = ({isOpenPost, onOpenPost}) => {
                 <Card>
                     <CardHeader 
                         avatar = {<Avatar src="https://gisfit-production.web.app/assets/img/logo.png"/>}
-                        title = {<Typography>Title</Typography>}
+                        title = {<Typography>{post.author}</Typography>}
                         subheader="September 14, 2016"
                     />
                     <CardMedia 
@@ -39,7 +38,7 @@ const OnePost = ({isOpenPost, onOpenPost}) => {
                     />
                     <CardContent>
                     <Typography variant="body2" color="textSecondary" component="p">
-                        Контент.
+                        {post.content}
                     </Typography>
                     </CardContent>
                     <CardActions>

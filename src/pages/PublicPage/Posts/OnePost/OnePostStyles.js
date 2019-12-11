@@ -3,8 +3,8 @@ import { StyleSheet } from 'aphrodite';
 
 export default StyleSheet.create({
     cardOne: {
-        marginTop: '10px',
-        marginBottom: '10px',
+        marginTop: '20px',
+        marginBottom: '20px',
         height: '100%'
     },
 

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import Axios from 'axios';
 import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
@@ -9,12 +9,12 @@ import Button from '@material-ui/core/Button';
 import ProfilePostContainer from './ProfilePost/ProfilePostContainer';
 import DeleteProfileContainer from './DeleteProfile/DeleteProfileContainer';
 import OnePostEditContainer from './OnePostEdit/OnePostEditContainer';
+import ChangeImageContainer from './ChangeImage/ChangeImageContainer';
 import { css } from 'aphrodite';
 import styles from './ProfileStyles';
-import { connect } from 'react-redux';
 
 
-const Profile = ({posts, authUser, onDeleteProfile}) => {
+const Profile = ({posts, authUser, changeState, onDeleteProfile, onChangeImage, onChangeState}) => {
 
 
   const deleteProfile = () => {
@@ -30,7 +30,7 @@ const Profile = ({posts, authUser, onDeleteProfile}) => {
           spacing={3}
         >
           <Grid item xs={5} className={css(styles.avatarWrapper)}>
-            <Avatar src={authUser.image} className={css(styles.avatar)} />
+            <Avatar src={authUser.image} className={css(styles.avatar)} onClick={onChangeImage}/>
           </Grid>
           <Grid item xs={7} className={css(styles.infoWrapper)}>
           
@@ -47,6 +47,12 @@ const Profile = ({posts, authUser, onDeleteProfile}) => {
                 id="outlined-helperText"
                 label="Name"
                 defaultValue={authUser.name}
+                onBlur={
+                  (event) => {
+                    Axios
+                      .post('http://localhost:8000/editName', {name: event.target.value, id: authUser.id})
+                  }
+                }
                 className={css(styles.textField)}
                 margin="normal"  
                 variant="outlined"
@@ -55,6 +61,12 @@ const Profile = ({posts, authUser, onDeleteProfile}) => {
                 id="outlined-helperText"
                 label="Surname"
                 defaultValue={authUser.surname}
+                onBlur={
+                  (event) => {
+                    Axios
+                      .post('http://localhost:8000/editSurname', {surname: event.target.value, id: authUser.id})
+                  }
+                }
                 className={css(styles.textField)}
                 margin="normal"
                 variant="outlined"
@@ -72,13 +84,18 @@ const Profile = ({posts, authUser, onDeleteProfile}) => {
         >
           {
             posts.map((post, index) => (
-              post.author == authUser.login ? (<ProfilePostContainer key={index} postInfo={post.author}/>) : ('')
+                post.author === authUser.login ? (
+                  <Grid item md={4} sm={6} xs={12}>
+                    <ProfilePostContainer key={index} post={post}/>
+                  </Grid>
+                ) : ('')
             ))
           }
         </Grid>
       </Container>
        <DeleteProfileContainer/>
-       <OnePostEditContainer/>
+       <ChangeImageContainer/>
+       
     </div>
   );
 }

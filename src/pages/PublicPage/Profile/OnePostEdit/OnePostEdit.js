@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
 import TextField from '@material-ui/core/TextField';
@@ -9,33 +9,31 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 import FormGroup from '@material-ui/core/FormGroup';
 import Typography from '@material-ui/core/Typography';
 import Multiselect from 'react-widgets/lib/Multiselect';
-import { connect } from 'react-redux';
-import { css } from 'aphrodite';
 
-
-const OnePostEdit = ({isEditPost, postEditFalse}) => {
+const OnePostEdit = ({post, isEditPost, postEditFalse}) => {
 
     const editPostFalse = () => {
         postEditFalse();
     }
 
     return (
-        <Dialog open={isEditPost} onBackdropClick={editPostFalse}>>  
+        <Dialog open={isEditPost} onBackdropClick={editPostFalse}>
             <DialogTitle id="form-dialog-title">Edit post</DialogTitle>
             <DialogContent>
                 <DialogContentText>
                     To edit a post, please, change title, upload new image and write new description here or you can change some tags.
                 </DialogContentText>
                 <Typography variant="h6">
-                    Title
+                    {post.title}
                 </Typography>
                 <FormGroup>
                     <TextField
-                    id="outlined-search"
-                    label="Title"
-                    type="text"
-                    margin="normal"
-                    variant="outlined"
+                        id="outlined-search"
+                        label="Title"
+                        type="text"
+                        margin="normal"
+                        variant="outlined"
+                        defaultValue={post.title}
                     />
                     <Typography variant="h6">
                         Image
@@ -57,7 +55,6 @@ const OnePostEdit = ({isEditPost, postEditFalse}) => {
                     </Typography>
                     <TextField
                         id="outlined-search"
-                        label="Content"
                         type="text"
                         multiline={true}
                         rows='5'
@@ -74,7 +71,9 @@ const OnePostEdit = ({isEditPost, postEditFalse}) => {
                 </FormGroup>
             </DialogContent>
             <DialogActions>
-                <Button  color="primary">
+                <Button  color="primary" onClick={()=>{
+                    console.log('1', post);
+                }}>
                     Cancel
                 </Button>
                 <Button  color="primary">

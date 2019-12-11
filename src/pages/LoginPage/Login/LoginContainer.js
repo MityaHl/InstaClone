@@ -7,8 +7,8 @@ const mapStateToProps = state => ({
   });
 
 const mapDispatchToProps =  dispatch => ({
-    onAuthTrue: () => {
-        dispatch(addAuthUser());
+    onAuthTrue: (data) => {
+        dispatch(addAuthUser(data));
     }
   });
 

@@ -1,5 +1,4 @@
-import React, { Component } from 'react';
-import Grid from '@material-ui/core/Grid';
+import React from 'react';
 import Avatar from '@material-ui/core/Avatar';
 import Typography from '@material-ui/core/Typography';
 import Card from '@material-ui/core/Card';
@@ -13,37 +12,39 @@ import IconButton from '@material-ui/core/IconButton';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
+import OnePostEditContainer from '../OnePostEdit/OnePostEditContainer';
 import { css } from 'aphrodite';
-import { connect } from 'react-redux';
-import styles from '../ProfileStyles';
+import styles from './ProfilePostStyles';
 
-const ProfilePost = ({postInfo, isCreate, onEditPost}) => { 
+const ProfilePost = ({isCreate, onEditPost, post}) => { 
 
   const editPost = () => {
     onEditPost();
   }
-
+  
   return(
-      <Grid item md={4} sm={6} xs={12}>
-      <Card >
+       
+      <Card className={css(styles.post)}>
         <CardHeader 
           avatar = {<Avatar src="https://gisfit-production.web.app/assets/img/logo.png"/>}
-          title = {<Typography>{postInfo}</Typography>}
+          title = {<Typography>{post.author}</Typography>}
           action={
             <IconButton aria-label="settings" onClick={editPost}>
               <MoreVertIcon />
             </IconButton>
           }
-          subheader="September 14, 2016"
+          subheader={post.created_at}
         />
         <CardMedia 
             className={css(styles.media)}
-          image="https://sun9-67.userapi.com/c855336/v855336480/15f3ad/tjtBbYGdwXk.jpg"
+          image={post.image}
           title="Paella dish"
         />
-        <CardContent>
+        <CardContent
+            className={css(styles.content)}
+        >
           <Typography variant="body2" color="textSecondary" component="p">
-            Контент.
+            {post.content.slice(0,90) + '...'}
           </Typography>
         </CardContent>
         <CardActions>
@@ -53,7 +54,7 @@ const ProfilePost = ({postInfo, isCreate, onEditPost}) => {
           />
         </CardActions>
       </Card>
-    </Grid>
+
   )
 }
 

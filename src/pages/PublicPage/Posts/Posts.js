@@ -10,7 +10,6 @@ import Button from '@material-ui/core/Button';
 import CreatePostContainer from './CreatePost/CreatePostContainer';
 import PostContainer from './Post/PostContainer';
 import OnePostContainer from './OnePost/OnePostContainer';
-import { connect } from 'react-redux';
 import { css } from 'aphrodite';
 import styles from './PostsStyles';
 
@@ -19,7 +18,6 @@ const Posts = ({posts, onAddPost, onQueryPosts}) => {
 
   const [findByUserLogin, setFindByUserLogin] = useState('');
   const [findByTag, setFindByTag] = useState('');
-  const [axios, setAxios] = useState({});
 
   const addPost = () => {
     onAddPost();
@@ -38,7 +36,6 @@ const Posts = ({posts, onAddPost, onQueryPosts}) => {
         })
       }, []
     );
-
   
 
   let sortPosts = posts.filter((post) => (
@@ -63,7 +60,7 @@ const Posts = ({posts, onAddPost, onQueryPosts}) => {
                 
               {
                 sortPosts.map((post, index) => (
-                  <PostContainer key={post.id} post={post}/>
+                    <PostContainer key={post.id} post={post}/>
                 ))
               }
                 
@@ -116,7 +113,6 @@ const Posts = ({posts, onAddPost, onQueryPosts}) => {
                 </div>  
               </Grid>
         </Grid>
-        <OnePostContainer/>
         <CreatePostContainer/>
       </Container>
     </div>

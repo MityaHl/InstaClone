@@ -13,7 +13,7 @@ import styles from './HeaderMenuStyles'
 const HeaderMenu = ({authUser}) => {
     const [anchorEl, setAnchorEl] = React.useState(null);
         const handleClick = event => {
-        setAnchorEl(event.currentTarget);
+            setAnchorEl(event.currentTarget);
         };
   
     const handleClose = () => {
@@ -35,15 +35,20 @@ const HeaderMenu = ({authUser}) => {
                 open={Boolean(anchorEl)}
                 onClose={handleClose}
                 >
-                <MenuItem onClick={handleClose}>
-                    <PersonIcon className={ css(styles.icon) } fontSize="small" />
-                    <Link to='/profile' className={ css(styles.blackLink)} >
-                    <Typography >  
-                        My account
-                    </Typography>
-                    </Link>
-                </MenuItem>
-                <MenuItem onClick={handleClose}>
+                {
+                    !authUser.admin && (
+                        <MenuItem onClick={handleClose} className={css(styles.menuItem)}>
+                            <PersonIcon className={ css(styles.icon) } fontSize="small" />
+                            <Link to='/profile' className={ css(styles.blackLink)} >
+                                <Typography >  
+                                    My account
+                                </Typography>
+                            </Link>
+                        </MenuItem>
+                    ) 
+                }
+                
+                <MenuItem onClick={handleClose} className={css(styles.menuItem)}>
                     <ExitToAppIcon className={ css(styles.icon) } fontSize="small" />
                     <Link to='/logout' className={ css(styles.blackLink) }>
                     <Typography>

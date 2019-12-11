@@ -47,3 +47,23 @@ export const editPostFalse = () => ({
     type: 'CHANGE_IS_EDIT_POST', 
     payload: false 
 });
+
+export const isChangeImageTrue = () => ({
+    type: 'CHANGE_IMAGE',
+    payload: true 
+});
+
+export const isChangeImageFalse = () => ({
+    type: 'CHANGE_IMAGE',
+    payload: false 
+});
+
+export const isDeletePostTrue = () => ({
+    type: 'CHANGE_IS_DELETE_POST',
+    payload: true 
+});
+
+export const isDeletePostFalse = () => ({
+    type: 'CHANGE_IS_DELETE_POST',
+    payload: false 
+});
