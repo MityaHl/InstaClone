@@ -1,5 +1,6 @@
 import { connect } from 'react-redux';
 import { isChangeImageFalse } from '../../../../store/actions/mainValues';
+import { changeImage } from '../../../../store/actions/authUser';
 import ChangeImage from './ChangeImage';
 
 
@@ -9,9 +10,12 @@ const mapStateToProps = state => ({
   });
 
 const mapDispatchToProps =  dispatch => ({
-    onChangeImage: () => {
-        dispatch(isChangeImageFalse());
-      }
+    onChangeImage: () => {        
+      dispatch(isChangeImageFalse());
+    },
+    onPostNewImage: (data)=>{
+      dispatch(changeImage(data));
+    }
   });
 
 export default connect( 

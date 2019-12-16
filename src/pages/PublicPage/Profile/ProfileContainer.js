@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
 import { isDeleteTrue } from '../../../store/actions/mainValues';
 import { isChangeImageTrue } from '../../../store/actions/mainValues';
+import { queryPosts } from '../../../store/actions/posts';
 import Profile from './Profile';
 
 const mapStateToProps = state => ({
@@ -15,6 +16,9 @@ const mapDispatchToProps =  dispatch => ({
     },
     onChangeImage: () => {
       dispatch(isChangeImageTrue());
+    },
+    onQueryPosts: (response) => {
+      dispatch(queryPosts(response));
     },
   });
 

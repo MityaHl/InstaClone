@@ -11,14 +11,14 @@ import { css } from 'aphrodite';
 import styles from './ChangeImageStyles';
 
 
-const ChangeImage = ({authUser, isChangeImage, onChangeImage}) => {
+const ChangeImage = ({authUser, isChangeImage, onChangeImage, onPostNewImage}) => {
 
     const[image, setImage] = useState('');
 
     const changeImage = () => {
         Axios  
             .post('http://localhost:8000/editImage', {image: image, id: authUser.id})
-            .then( onChangeImage )
+            .then( onPostNewImage(image), onChangeImage )
     }
   return (
       <Dialog open={isChangeImage} aria-labelledby="form-dialog-title" onBackdropClick={onChangeImage} minWidth='sm' fullWidth={true}>

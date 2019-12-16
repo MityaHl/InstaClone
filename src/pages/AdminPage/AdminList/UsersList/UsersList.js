@@ -12,7 +12,7 @@ import DeleteUserDialogContainer from './DeleteUserDialog/DeleteUserDialogContai
 import styles from './UsersListStyles';
 
 
-const UsersList = ({users, authUser, onDeleteUser, onQueryUsers}) => {
+const UsersList = ({users, authUser, onDeleteUser, onQueryUsers, onChangeAdmin}) => {
 
     const query = (response) => {
         onQueryUsers(response);
@@ -60,7 +60,10 @@ const UsersList = ({users, authUser, onDeleteUser, onQueryUsers}) => {
                             <TableCell align="center">
                                 <Checkbox checked={user.admin} onChange={ () => {
                                     Axios
-                                        .post('http://localhost:8000/editAdmin', {admin: !user.admin, id: user.id})
+                                        .post('http://localhost:8000/editAdmin', {admin: !user.admin, id: user.id})     
+                                        .then(
+                                            onChangeAdmin({id: user.id, admin: !user.admin})
+                                        )
                                     }
                                 }/>
                             </TableCell>

@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
 import UsersList from './UsersList';
 import { queryUsers } from '../../../../store/actions/users';
+import { changeIsAdmin } from '../../../../store/actions/users';
 import { isDeleteUserTrue } from '../../../../store/actions/mainValues';
 
 
@@ -14,8 +15,11 @@ const mapDispatchToProps =  dispatch => ({
       dispatch(queryUsers(response));
     },
     onDeleteUser: () => {
-        dispatch(isDeleteUserTrue());
-      }
+      dispatch(isDeleteUserTrue());
+    },
+    onChangeAdmin: (data) => {
+      dispatch(changeIsAdmin(data));
+    }
   });
 
 export default connect( 

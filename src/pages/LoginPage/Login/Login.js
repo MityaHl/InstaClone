@@ -36,7 +36,7 @@ const Login = ({users , onAuthTrue}) => {
             justify="center"
           >
             <Typography variant="h4" >
-                InstaClone
+                lifebook
             </Typography>
             <TextField
                 id="outlined-helperText"

@@ -3,3 +3,8 @@ export const queryPosts = (postData) => ({
     payload: postData
 });
 
+export const deletePosts = (postData) => ({
+    type: 'DELETE_POST', 
+    payload: postData
+});
+

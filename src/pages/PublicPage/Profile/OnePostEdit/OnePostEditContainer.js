@@ -1,5 +1,7 @@
 import { connect } from 'react-redux';
 import { editPostFalse } from '../../../../store/actions/mainValues';
+import { queryPosts } from '../../../../store/actions/posts';
+
 import OnePostEdit from './OnePostEdit';
 
 const mapStateToProps = state => ({
@@ -9,6 +11,9 @@ const mapStateToProps = state => ({
 const mapDispatchToProps =  dispatch => ({
    postEditFalse: () => {
         dispatch(editPostFalse());
+    },
+    onQueryPosts: (response) => {
+      dispatch(queryPosts(response));
     }
   });
 

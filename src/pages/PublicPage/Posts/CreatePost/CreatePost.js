@@ -14,7 +14,7 @@ import { css } from 'aphrodite';
 import styles from './CreatePostStyles';
 
 
-const CreatePost = ({isCreate, author, onAddPost}) => {
+const CreatePost = ({isCreate, author, onAddPost, query}) => {
 
     const [title, setTitle] = useState('');
     const [content, setContent] = useState('');
@@ -24,16 +24,22 @@ const CreatePost = ({isCreate, author, onAddPost}) => {
      const addPost = () => {
         Axios
             .post('http://localhost:8000/addPost', {
-            title: title,
-            author: author,
-            content: content,
-            tag: tag, 
-            image: image
+                title: title,
+                author: author.login,
+                author: author.id,
+                content: content,
+                tag: tag, 
+                image: image
             })
             .then(response => {
-                
+                Axios
+                    .get('http://localhost:8000/posts')
+                    .then(response => {
+                        query(response.data);
+                        onAddPost();
+                    })
             })
-        onAddPost();
+        
       }
 
 

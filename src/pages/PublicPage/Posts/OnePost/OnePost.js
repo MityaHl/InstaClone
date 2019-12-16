@@ -16,29 +16,29 @@ import { css } from 'aphrodite';
 import styles from './OnePostStyles';
 
 
-const OnePost = ({post, isOpenPost, onOpenPost}) => {
+const OnePost = ({post , openPostData, closePostDialog, isOpenPost, onOpenPost}) => {
   
     const openPost = () => {
         onOpenPost();
     }
-
+    console.log('dverv',post);
     return (   
-        <Dialog fullWidth={true} open={isOpenPost}  onBackdropClick={openPost}>
+        <Dialog fullWidth={true} open={openPostData.title} aria-labelledby="simple-dialog-title" onBackdropClick={closePostDialog}>
             <Container className={css(styles.cardOne)}>
                 <Card>
                     <CardHeader 
-                        avatar = {<Avatar src="https://gisfit-production.web.app/assets/img/logo.png"/>}
-                        title = {<Typography>{post.author}</Typography>}
+                        avatar = {<Avatar src={openPostData.photo}/>}
+                        title = {<Typography>{openPostData.author}</Typography>}
                         subheader="September 14, 2016"
                     />
                     <CardMedia 
-                        image="https://sun9-67.userapi.com/c855336/v855336480/15f3ad/tjtBbYGdwXk.jpg"
+                        image={openPostData.image}
                         title="Paella dish"
                         className={css(styles.media)}
                     />
                     <CardContent>
                     <Typography variant="body2" color="textSecondary" component="p">
-                        {post.content}
+                        {openPostData.content}
                     </Typography>
                     </CardContent>
                     <CardActions>

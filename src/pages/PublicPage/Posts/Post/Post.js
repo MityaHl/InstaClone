@@ -16,16 +16,16 @@ import OnePostContainer from '../OnePost/OnePostContainer';
 import { css } from 'aphrodite';
 import styles from './PostStyles';
 
-const Post = ({state, onOpenPost, post}) => {
+const Post = ({ onOpenPost, post, openPostDialog}) => {
 
   const openPost = () => {
-    onOpenPost();
+    openPostDialog(post);
   }
 
   return(
     <Card className={css(styles.card)}>
         <CardHeader 
-            avatar = {<Avatar src="https://gisfit-production.web.app/assets/img/logo.png"/>}
+            avatar = {<Avatar src={post.photo}/>}
             title = {<Typography>{post.author}</Typography>}
             action={
                 <IconButton  onClick={openPost}>
@@ -49,7 +49,6 @@ const Post = ({state, onOpenPost, post}) => {
             label="Like"
             />
         </CardActions>
-        <OnePostContainer post={post}/>
     </Card>    
   )
 }

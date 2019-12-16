@@ -1,5 +1,7 @@
 import { connect } from 'react-redux';
 import { isDeleteUserFalse } from '../../../../../store/actions/mainValues';
+import { deleteUser } from '../../../../../store/actions/users';
+
 import DeleteUserDialog from './DeleteUserDialog';
 
 const mapStateToProps = state => ({
@@ -7,8 +9,9 @@ const mapStateToProps = state => ({
   });
 
 const mapDispatchToProps =  dispatch => ({
-    onDeleteUser: () => {
+    onDeleteUser: (id) => {
         dispatch(isDeleteUserFalse());
+        dispatch(deleteUser(id));
       }
   });
 

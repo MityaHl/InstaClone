@@ -17,16 +17,6 @@ import { queryPosts } from './store/actions/posts';
 
 const App = () =>  {
 
-  useEffect(
-     () => {
-      Axios
-        .get('http://localhost:8000/posts')
-        .then(response => {
-           queryPosts(response.data);
-        })
-      }, []
-    );
-
     const isAuth  = useSelector(state => state.authUser.login); 
     const isAdmin  = useSelector(state => state.authUser.admin);
   console.log(isAdmin);

@@ -12,7 +12,7 @@ const DeletePostDialog = ({post, isDeletePost, onDeletePost}) => {
     const deletePost = () => {
         Axios
             .post('http://localhost:8000/deletePost', post)
-            .then(onDeletePost)
+            .then(onDeletePost(post.id))
     };
 
     return (

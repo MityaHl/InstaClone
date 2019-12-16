@@ -4,7 +4,7 @@ import { closeCreating } from '../../../../store/actions/mainValues';
 
 const mapStateToProps = state => ({
     isCreate: state.mainValues.isCreate,
-    author: state.authUser.login
+    author: state.authUser
   });
 
 const mapDispatchToProps = dispatch => ({

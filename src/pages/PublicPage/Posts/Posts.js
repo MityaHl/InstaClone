@@ -36,7 +36,14 @@ const Posts = ({posts, onAddPost, onQueryPosts}) => {
         })
       }, []
     );
-  
+  const [openPostData, setOpenPostData] = useState({});
+  const openPostDialog = (post) => {
+    setOpenPostData(post);
+  }
+
+  const closePostDialog = () => {
+    setOpenPostData({});
+  }
 
   let sortPosts = posts.filter((post) => (
     post.author.includes(findByUserLogin)
@@ -60,7 +67,7 @@ const Posts = ({posts, onAddPost, onQueryPosts}) => {
                 
               {
                 sortPosts.map((post, index) => (
-                    <PostContainer key={post.id} post={post}/>
+                    <PostContainer key={post.id} post={post} openPostDialog={openPostDialog}/>                  
                 ))
               }
                 
@@ -113,7 +120,8 @@ const Posts = ({posts, onAddPost, onQueryPosts}) => {
                 </div>  
               </Grid>
         </Grid>
-        <CreatePostContainer/>
+        <CreatePostContainer query={query}/>
+        <OnePostContainer closePostDialog={closePostDialog} openPostData={openPostData} />
       </Container>
     </div>
   );

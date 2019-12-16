@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Axios from 'axios';
 import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
@@ -14,11 +14,26 @@ import { css } from 'aphrodite';
 import styles from './ProfileStyles';
 
 
-const Profile = ({posts, authUser, changeState, onDeleteProfile, onChangeImage, onChangeState}) => {
+const Profile = ({posts, authUser, changeState, onDeleteProfile, onChangeImage, onChangeState, onQueryPosts}) => {
 
 
   const deleteProfile = () => {
     onDeleteProfile();
+  }
+
+  const [editPostData, setEditPostData] = useState({});
+  
+  const openEditPostDialog = (post) => {
+    setEditPostData(post);
+  }
+
+  const closeEditPostDialog = () => {
+     Axios
+      .get('http://localhost:8000/posts')
+      .then(response => {
+          onQueryPosts(response.data);
+          setEditPostData({});
+      })
   }
       
   return (
@@ -86,7 +101,7 @@ const Profile = ({posts, authUser, changeState, onDeleteProfile, onChangeImage, 
             posts.map((post, index) => (
                 post.author === authUser.login ? (
                   <Grid item md={4} sm={6} xs={12}>
-                    <ProfilePostContainer key={index} post={post}/>
+                    <ProfilePostContainer key={post.id} authUser={authUser} post={post} openEditPostDialog={openEditPostDialog}/>
                   </Grid>
                 ) : ('')
             ))
@@ -95,7 +110,9 @@ const Profile = ({posts, authUser, changeState, onDeleteProfile, onChangeImage, 
       </Container>
        <DeleteProfileContainer/>
        <ChangeImageContainer/>
-       
+       {
+         editPostData.title && (<OnePostEditContainer editPostData={editPostData} closeEditPostDialog={closeEditPostDialog}/>)
+       }
     </div>
   );
 }

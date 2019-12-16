@@ -3,7 +3,6 @@ import { openPost } from '../../../../store/actions/mainValues';
 import Post from './Post';
 
 const mapStateToProps = state => ({
-    state: state
   });
 
 const mapDispatchToProps =  dispatch => ({

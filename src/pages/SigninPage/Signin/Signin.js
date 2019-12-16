@@ -52,7 +52,7 @@ const Signin = () => {
               alignItems='center'
             > 
               <Typography variant="h4" >
-                InstaClone
+                lifebook
               </Typography>
             </Grid>
             

@@ -16,18 +16,18 @@ import OnePostEditContainer from '../OnePostEdit/OnePostEditContainer';
 import { css } from 'aphrodite';
 import styles from './ProfilePostStyles';
 
-const ProfilePost = ({isCreate, onEditPost, post}) => { 
+const ProfilePost = ({isCreate, onEditPost, post, openEditPostDialog, authUser}) => { 
 
   const editPost = () => {
-    onEditPost();
+    openEditPostDialog(post);
   }
   
   return(
        
       <Card className={css(styles.post)}>
         <CardHeader 
-          avatar = {<Avatar src="https://gisfit-production.web.app/assets/img/logo.png"/>}
-          title = {<Typography>{post.author}</Typography>}
+          avatar = {<Avatar src={authUser.image}/>}
+          title = {<Typography>{post.title}</Typography>}
           action={
             <IconButton aria-label="settings" onClick={editPost}>
               <MoreVertIcon />

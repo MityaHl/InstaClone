@@ -33,7 +33,7 @@ import styles from './HeaderStyles';
                 <InstagramIcon className={ css(styles.logo) }/>
                 <Typography variant="h6">
                   <Link to='/'  className={ css(styles.link) }>
-                   InstaClone
+                   lifebook
                   </Link>
                 </Typography>
               </Grid>
